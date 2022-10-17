@@ -7,11 +7,11 @@ public class DefaultAwesomeActionService implements AwesomeActionService {
 
     @Override
     public String processName(final String name) {
-        if(name.equals("Anton")) {
-            return "Hello Anton!";
+        if(name.equals("Xu Mengyao")) {
+            return "傻逼你好!";
         }
         else {
-            return "Hello Unknown Stranger!";
+            return "Unknown Stranger!";
         }
     }
 
