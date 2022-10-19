@@ -6,7 +6,7 @@ import java.math.BigDecimal;
 
 @Data
 public class Country {
-    private int country_id;
-    private String country_name;
-    private BigDecimal tax_rate;
+    private int countryId;
+    private String countryName;
+    private BigDecimal taxRate;
 }
