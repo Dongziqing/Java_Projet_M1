@@ -1,5 +1,6 @@
-package com.gvv.service;
+package com.gvv.service.impl;
 
+import com.gvv.service.AwesomeActionService;
 import org.springframework.stereotype.Component;
 
 @Component
