@@ -1,13 +1,12 @@
 package com.gvv.java_projet_m1;
 
-import com.gvv.entity.Brand;
-import com.gvv.entity.Country;
-import com.gvv.entity.Customer;
-import com.gvv.entity.Order;
+import com.gvv.entity.*;
 import com.gvv.mapper.BrandMapper;
 import com.gvv.mapper.CountryMapper;
 import com.gvv.mapper.CustomerMapper;
 import com.gvv.mapper.OrderMapper;
+import com.gvv.mapper.CustomerDTOMapper;
+import com.gvv.service.impl.MainServiceImpl;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -28,6 +27,9 @@ class JavaProjetM1ApplicationTests {
 
     @Autowired
     private OrderMapper orderMapper;
+
+    @Autowired
+    private CustomerDTOMapper customerDTOMapper;
 
     @Test
     public void BrandMapperTest() {
@@ -56,9 +58,15 @@ class JavaProjetM1ApplicationTests {
     @Test
     public void BrandMapperInsertTest() {
         Brand b = new Brand();
-        b.setBrandName("testpppzzsds");
+        b.setBrandName("testdds");
         brandMapper.insert(b);
         System.out.println(b.getBrandId());
+    }
+
+    @Test
+    public void serviceTest() {
+        List<CustomerDTO> customerDTOs = (new MainServiceImpl(customerMapper)).getAllCustomerDTO();
+        customerDTOs.forEach(System.out::println);
     }
 
 }

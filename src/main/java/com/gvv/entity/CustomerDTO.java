@@ -2,13 +2,10 @@ package com.gvv.entity;
 
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
-import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Data;
 
 @Data
-@TableName("t_customer")
-public class Customer {
-    @TableId(type = IdType.AUTO)
+public class CustomerDTO {
     private int customerId;
     private int customerTypeId;
     private int countryId;
@@ -18,4 +15,6 @@ public class Customer {
     private String lastName;
     private String email;
     private String address;
+
+    private String customerTypeName;
 }
