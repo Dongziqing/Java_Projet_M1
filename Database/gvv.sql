@@ -68,12 +68,12 @@ VALUES (2, 'scooter');
 -- ----------------------------
 CREATE TABLE `t_vehicle`
 (
-    `vehicle_id`     int(11)        NOT NULL AUTO_INCREMENT,
-    `brand_id`       int(11)        NOT NULL,
+    `vehicle_id`      int(11)        NOT NULL AUTO_INCREMENT,
+    `brand_id`        int(11)        NOT NULL,
     `vehicle_type_id` int(11)        NOT NULL,
-    `prise`         decimal(15, 4) NOT NULL,
-    `storage_time`   datetime(0)    NOT NULL,
-    `sale_status`    boolean DEFAULT FALSE,
+    `prise`           decimal(15, 4) NOT NULL,
+    `storage_time`    datetime(0)    NOT NULL,
+    `sale_status`     boolean DEFAULT FALSE,
     PRIMARY KEY (`vehicle_id`) USING BTREE,
     FOREIGN KEY (`brand_id`) REFERENCES t_brand (`brand_id`) ON UPDATE CASCADE ON DELETE CASCADE,
     FOREIGN KEY (`vehicle_type_id`) REFERENCES t_vehicle_type (`vehicle_type_id`) ON UPDATE CASCADE ON DELETE CASCADE
@@ -153,16 +153,18 @@ VALUES (3, 'France', 0.20);
 -- ----------------------------
 CREATE TABLE `t_customer`
 (
-    `customer_id` int(11)      NOT NULL AUTO_INCREMENT,
-    `country_id`  int(11)      NOT NULL,
-    `user_name`   varchar(255) NOT NULL,
-    `password`   varchar(255) NOT NULL,
-    `first_name`  varchar(255) NOT NULL,
-    `last_name`   varchar(255) NOT NULL,
-    `email`      varchar(255) NOT NULL,
-    `address`    varchar(255) NOT NULL,
+    `customer_id`      int(11)      NOT NULL AUTO_INCREMENT,
+    `customer_type_id` int(11)      NOT NULL,
+    `country_id`       int(11)      NOT NULL,
+    `user_name`        varchar(255) NOT NULL,
+    `password`         varchar(255) NOT NULL,
+    `first_name`       varchar(255) NOT NULL,
+    `last_name`        varchar(255) NOT NULL,
+    `email`            varchar(255) NOT NULL,
+    `address`          varchar(255) NOT NULL,
     PRIMARY KEY (`customer_id`) USING BTREE,
     UNIQUE INDEX (`user_name`) USING BTREE,
+    FOREIGN KEY (`customer_type_id`) REFERENCES t_customer_type (`customer_type_id`) ON UPDATE CASCADE ON DELETE CASCADE,
     FOREIGN KEY (`country_id`) REFERENCES t_country (`country_id`) ON UPDATE CASCADE ON DELETE CASCADE
 ) ENGINE = InnoDB
   AUTO_INCREMENT = 1
@@ -174,9 +176,9 @@ CREATE TABLE `t_customer`
 -- Records of customer
 -- ----------------------------
 INSERT INTO `t_customer`
-VALUES (1, 1, 'userA', '11111111', 'Naura', 'Mzurel', 'john@gmail.com', 'asd');
+VALUES (1, 1, 1, 'userA', '11111111', 'Naura', 'Mzurel', 'john@gmail.com', 'asd');
 INSERT INTO `t_customer`
-VALUES (2, 3, 'userB', '11111111', 'Alpha', 'Teko', 'alpha@gamil.com', 'asd');
+VALUES (2, 2, 3, 'userB', '11111111', 'Alpha', 'Teko', 'alpha@gamil.com', 'asd');
 
 
 -- ----------------------------
@@ -184,12 +186,12 @@ VALUES (2, 3, 'userB', '11111111', 'Alpha', 'Teko', 'alpha@gamil.com', 'asd');
 -- ----------------------------
 CREATE TABLE `t_order`
 (
-    `order_id`            int(11)        NOT NULL AUTO_INCREMENT,
-    `customer_id`         int(11)        NOT NULL,
-    `vehicle_id`          int(11)        NOT NULL,
-    `order_create_date`  datetime(0)    NOT NULL,
-    `order_status`       varchar(1)     NOT NULL COMMENT 'status of the order(0: in progress, 1: validated, 2: delivered)',
-    `payment_type`       varchar(1)     NOT NULL COMMENT 'payment type of the order(0: cash, 1: credit)',
+    `order_id`          int(11)     NOT NULL AUTO_INCREMENT,
+    `customer_id`       int(11)     NOT NULL,
+    `vehicle_id`        int(11)     NOT NULL,
+    `order_create_date` datetime(0) NOT NULL,
+    `order_status`      varchar(1)  NOT NULL COMMENT 'status of the order(0: in progress, 1: validated, 2: delivered)',
+    `payment_type`      varchar(1)  NOT NULL COMMENT 'payment type of the order(0: cash, 1: credit)',
     PRIMARY KEY (`order_id`) USING BTREE,
     FOREIGN KEY (`customer_id`) REFERENCES t_customer (`customer_id`) ON UPDATE CASCADE ON DELETE CASCADE,
     FOREIGN KEY (`vehicle_id`) REFERENCES t_vehicle (`vehicle_id`) ON UPDATE CASCADE ON DELETE CASCADE
@@ -206,3 +208,57 @@ INSERT INTO `t_order`
 VALUES (1, 1, 1, '2021-01-08', '0', '0');
 INSERT INTO `t_order`
 VALUES (2, 2, 3, '2022-01-09', '1', '1');
+
+
+-- ----------------------------
+-- Views of vehicle
+-- ----------------------------
+
+CREATE OR REPLACE VIEW `v_vehicle` AS
+SELECT vehicle_id, brand_name, vehicle_type_name, prise, storage_time, sale_status
+FROM `t_vehicle`
+         NATURAL JOIN `t_vehicle_type`
+         NATURAL JOIN `t_brand`;
+
+
+-- ----------------------------
+-- Views of customer
+-- ----------------------------
+
+CREATE OR REPLACE VIEW `v_customer` AS
+SELECT customer_id,
+       customer_type_name,
+       country_name,
+       tax_rate,
+       user_name,
+       first_name,
+       last_name,
+       email,
+       address
+FROM `t_customer`
+         NATURAL JOIN `t_customer_type`
+         NATURAL JOIN `t_country`;
+
+-- ----------------------------
+-- Views of order
+-- ----------------------------
+
+CREATE OR REPLACE VIEW `v_order` AS
+SELECT order_id,
+       order_create_date,
+       order_status,
+       payment_type,
+       brand_name,
+       vehicle_type_name,
+       prise,
+       storage_time,
+       sale_status,
+       customer_type_name,
+       country_name,
+       tax_rate,
+       user_name,
+       email,
+       address
+FROM `t_order`
+         NATURAL JOIN `v_customer`
+         NATURAL JOIN `v_vehicle`

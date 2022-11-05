@@ -1,13 +1,8 @@
 package com.gvv.java_projet_m1;
 
-import com.gvv.entity.Brand;
-import com.gvv.entity.Country;
-import com.gvv.entity.Customer;
-import com.gvv.entity.Order;
-import com.gvv.mapper.BrandMapper;
-import com.gvv.mapper.CountryMapper;
-import com.gvv.mapper.CustomerMapper;
-import com.gvv.mapper.OrderMapper;
+import com.gvv.entity.*;
+import com.gvv.mapper.*;
+import com.gvv.service.impl.VOServiceImpl;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -29,11 +24,17 @@ class JavaProjetM1ApplicationTests {
     @Autowired
     private OrderMapper orderMapper;
 
-    @Test
-    public void BrandMapperTest() {
-        List<Brand> brands = brandMapper.selectList(null);
-        brands.forEach(System.out::println);
-    }
+    @Autowired
+    private OrderVOMapper orderVoMapper;
+
+    @Autowired
+    private CustomerVOMapper customerVOMapper;
+
+    @Autowired
+    private VehicleVOMapper vehicleVOMapper;
+
+    @Autowired
+    private VOServiceImpl voServiceImpl;
 
     @Test
     public void CountryMapperTest() {
@@ -42,23 +43,29 @@ class JavaProjetM1ApplicationTests {
     }
 
     @Test
-    public void CustomerMapperTest() {
-        List<Customer> customers = customerMapper.selectList(null);
-        customers.forEach(System.out::println);
+    public void CustomerVOMapperTest() {
+        List<CustomerVO> customerVOs = customerVOMapper.selectList(null);
+        customerVOs.forEach(System.out::println);
     }
 
     @Test
-    public void OrderMapperTest() {
-        List<Order> orders = orderMapper.selectList(null);
-        orders.forEach(System.out::println);
+    public void OrderVOMapperTest() {
+        List<OrderVO> orderVOs = orderVoMapper.selectList(null);
+        orderVOs.forEach(System.out::println);
     }
 
     @Test
+    public void VehicleVOMapperTest() {
+        List<VehicleVO> vehicleVOs = vehicleVOMapper.selectList(null);
+        vehicleVOs.forEach(System.out::println);
+    }
+
     public void BrandMapperInsertTest() {
         Brand b = new Brand();
-        b.setBrandName("testpppzzsds");
+        b.setBrandName("dfdfsd");
         brandMapper.insert(b);
         System.out.println(b.getBrandId());
     }
+
 
 }
