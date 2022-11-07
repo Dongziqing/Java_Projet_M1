@@ -7,6 +7,8 @@ import java.math.BigDecimal;
 import java.util.List;
 
 public interface VOService {
+    CustomerVO Login(String userName, String password);
+
     List<VehicleVO> getAllVehicleVOs();
 
     List<VehicleVO> getVehicleStorageLongTimes();

@@ -16,6 +16,11 @@ import java.util.Set;
 @Service
 public class VOServiceImpl implements VOService {
 
+    @Autowired
+    CustomerMapper customerMapper;
+
+    @Autowired
+    CustomerVOMapper customerVOMapper;
 
     @Autowired
     VehicleVOMapper vehicleVOMapper;
@@ -28,6 +33,27 @@ public class VOServiceImpl implements VOService {
 
     @Autowired
     CountryMapper countryMapper;
+
+
+    /**
+     * @param userName
+     * @param password
+     * @return
+     */
+    @Override
+    public CustomerVO Login(String userName, String password) {
+        QueryWrapper<Customer> query = new QueryWrapper<>();
+        query.eq("user_name", userName);
+        query.eq("password", password);
+        List<Customer> customers = customerMapper.selectList(query);
+        if (customers.isEmpty()) {
+            return null;
+        }else {
+            QueryWrapper<CustomerVO> queryV = new QueryWrapper<>();
+            queryV.eq("customer_id", customers.get(0).getCustomerId());
+            return customerVOMapper.selectList(queryV).get(0);
+        }
+    }
 
     /**
      * @return all information about the vehicle

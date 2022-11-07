@@ -1,5 +1,6 @@
 package com.gvv.java_projet_m1;
 
+import com.gvv.entity.CustomerVO;
 import com.gvv.entity.OrderVO;
 import com.gvv.entity.VehicleVO;
 import com.gvv.service.impl.VOServiceImpl;
@@ -14,6 +15,13 @@ public class VOServiceTests {
 
     @Autowired
     VOServiceImpl vOServiceImpl;
+
+    @Test
+    public void loginTest() {
+        String userName = "user";
+        String password = "password";
+        CustomerVO customerVO = vOServiceImpl.Login(userName, password);
+    }
 
     @Test
     public void getAllVehicleVOsTest() {
