@@ -5,13 +5,19 @@ import com.gvv.service.impl.VOServiceImpl;
 import de.felixroske.jfxsupport.FXMLController;
 import javafx.event.Event;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
+import javafx.scene.layout.AnchorPane;
+import javafx.stage.Stage;
 import javafx.stage.Window;
 import org.springframework.beans.factory.annotation.Autowired;
 import javafx.scene.control.TextField;
 import org.springframework.boot.SpringApplication;
+
+import java.io.IOException;
 
 @FXMLController
 public class LoginController {
@@ -50,6 +56,16 @@ public class LoginController {
         customerVO = voServiceImpl.Login(userName, password);
         if(customerVO == null) {
             infoBox("Please enter correct Email and Password", null, "Failed");
+        }else {
+            try{
+                AnchorPane page = FXMLLoader.load(getClass().getResource("main.fxml"));
+                Scene newScene = new Scene(page);
+                Stage stage = new Stage();
+                stage.setScene(newScene);
+                stage.show();
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
         }
     }
 

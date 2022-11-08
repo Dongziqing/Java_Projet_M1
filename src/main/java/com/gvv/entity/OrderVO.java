@@ -1,5 +1,7 @@
 package com.gvv.entity;
 
+import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Data;
 
@@ -9,6 +11,7 @@ import java.sql.Timestamp;
 @Data
 @TableName("v_order")
 public class OrderVO {
+    @TableId(type = IdType.AUTO)
     private int orderId;
     private Timestamp orderCreateDate;
     private String orderStatus;
