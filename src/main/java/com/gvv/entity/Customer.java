@@ -9,8 +9,8 @@ import lombok.Data;
 @TableName("t_customer")
 public class Customer {
     @TableId(type = IdType.AUTO)
-    private int customerId;
-    private int countryId;
+    private Integer customerId;
+    private Integer countryId;
     private String userName;
     private String password;
     private String firstName;

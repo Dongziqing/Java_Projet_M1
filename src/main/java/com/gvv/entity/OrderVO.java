@@ -12,7 +12,7 @@ import java.sql.Timestamp;
 @TableName("v_order")
 public class OrderVO {
     @TableId(type = IdType.AUTO)
-    private int orderId;
+    private Integer orderId;
     private Timestamp orderCreateDate;
     private String orderStatus;
     private String paymentType;
@@ -24,6 +24,7 @@ public class OrderVO {
     private String customerTypeName;
     private String countryName;
     private BigDecimal taxRate;
+    private Integer CustomerId;
     private String userName;
     private String email;
     private String address;

@@ -12,9 +12,9 @@ import java.sql.Timestamp;
 @TableName("t_order")
 public class Order {
     @TableId(type = IdType.AUTO)
-    private int orderId;
-    private int customerId;
-    private int vehicleId;
+    private Integer orderId;
+    private Integer customerId;
+    private Integer vehicleId;
     private Timestamp orderCreateDate;
     private String orderStatus;
     private String paymentType;

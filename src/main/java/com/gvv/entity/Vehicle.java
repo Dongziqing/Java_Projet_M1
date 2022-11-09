@@ -12,9 +12,9 @@ import java.sql.Timestamp;
 @TableName("t_vehicle")
 public class Vehicle {
     @TableId(type = IdType.AUTO)
-    private int vehicleId;
-    private int brandId;
-    private int vehicleTypeId;
+    private Integer vehicleId;
+    private Integer brandId;
+    private Integer vehicleTypeId;
     private BigDecimal prise;
     private Timestamp storageTime;
     private boolean saleStatus;

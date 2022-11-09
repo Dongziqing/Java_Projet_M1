@@ -1,6 +1,7 @@
 package com.gvv.service.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.baomidou.mybatisplus.core.conditions.update.UpdateWrapper;
 import com.gvv.entity.*;
 import com.gvv.mapper.*;
 import com.gvv.service.VOService;
@@ -23,13 +24,17 @@ public class VOServiceImpl implements VOService {
     CustomerVOMapper customerVOMapper;
 
     @Autowired
+    VehicleMapper vehicleMapper;
+
+    @Autowired
     VehicleVOMapper vehicleVOMapper;
+
+    @Autowired
+    OrderMapper orderMapper;
 
     @Autowired
     OrderVOMapper orderVOMapper;
 
-    @Autowired
-    OrderMapper orderMapper;
 
     @Autowired
     CountryMapper countryMapper;
@@ -42,6 +47,7 @@ public class VOServiceImpl implements VOService {
      */
     @Override
     public CustomerVO Login(String userName, String password) {
+
         QueryWrapper<Customer> query = new QueryWrapper<>();
         query.eq("user_name", userName);
         query.eq("password", password);
@@ -53,6 +59,7 @@ public class VOServiceImpl implements VOService {
             queryV.eq("customer_id", customers.get(0).getCustomerId());
             return customerVOMapper.selectList(queryV).get(0);
         }
+
     }
 
     /**
@@ -142,7 +149,15 @@ public class VOServiceImpl implements VOService {
         order.setPaymentType(paymentType);
         order.setOrderStatus("0");
         order.setOrderCreateDate(new Timestamp(System.currentTimeMillis()));
-        return orderMapper.insert(order);
+        int res = orderMapper.insert(order);
+        if(res > 0) {
+            UpdateWrapper<Vehicle> updateWrapper = new UpdateWrapper<>();
+            updateWrapper.eq("vehicle_id", vehicleId);
+            Vehicle vehicle = new Vehicle();
+            vehicle.setSaleStatus(true);
+            vehicleMapper.update(vehicle, updateWrapper);
+        }
+        return res;
     }
 
     /**

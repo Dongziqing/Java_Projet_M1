@@ -1,7 +1,9 @@
 package com.gvv.controller;
 
+import com.gvv.JavaProjetM1Application;
 import com.gvv.entity.CustomerVO;
 import com.gvv.service.impl.VOServiceImpl;
+import com.gvv.view.MainView;
 import de.felixroske.jfxsupport.FXMLController;
 import javafx.event.Event;
 import javafx.fxml.FXML;
@@ -11,6 +13,7 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import javafx.stage.Window;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -57,8 +60,12 @@ public class LoginController {
         if(customerVO == null) {
             infoBox("Please enter correct Email and Password", null, "Failed");
         }else {
+            Scene s = loginBtn.getScene();
+            s.setUserData(customerVO);
+            JavaProjetM1Application.showView(MainView.class);
+            /*
             try{
-                AnchorPane page = FXMLLoader.load(getClass().getResource("main.fxml"));
+                AnchorPane page = FXMLLoader.load(getClass().getResource("/view/main.fxml"));
                 Scene newScene = new Scene(page);
                 Stage stage = new Stage();
                 stage.setScene(newScene);
@@ -66,6 +73,7 @@ public class LoginController {
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }
+            */
         }
     }
 

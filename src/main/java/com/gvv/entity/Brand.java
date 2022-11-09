@@ -9,6 +9,6 @@ import lombok.Data;
 @TableName("t_brand")
 public class Brand {
     @TableId(type = IdType.AUTO)
-    private int brandId;
+    private Integer brandId;
     private String brandName;
 }

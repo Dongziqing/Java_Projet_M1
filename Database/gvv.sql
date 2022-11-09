@@ -37,6 +37,8 @@ INSERT INTO `t_brand`
 VALUES (3, 'Audi');
 INSERT INTO `t_brand`
 VALUES (4, 'Xiaomi');
+INSERT INTO `t_brand`
+VALUES (5, 'Huawei');
 
 
 -- ----------------------------
@@ -61,6 +63,8 @@ INSERT INTO `t_vehicle_type`
 VALUES (1, 'car');
 INSERT INTO `t_vehicle_type`
 VALUES (2, 'scooter');
+INSERT INTO `t_vehicle_type`
+VALUES (3, 'trucks');
 
 
 -- ----------------------------
@@ -146,6 +150,8 @@ INSERT INTO `t_country`
 VALUES (2, 'China', 0.13);
 INSERT INTO `t_country`
 VALUES (3, 'France', 0.20);
+INSERT INTO `t_country`
+VALUES (4, 'Germany', 0.20);
 
 
 -- ----------------------------
@@ -179,6 +185,8 @@ INSERT INTO `t_customer`
 VALUES (1, 1, 1, 'userA', '11111111', 'Naura', 'Mzurel', 'john@gmail.com', 'asd');
 INSERT INTO `t_customer`
 VALUES (2, 2, 3, 'userB', '11111111', 'Alpha', 'Teko', 'alpha@gamil.com', 'asd');
+INSERT INTO `t_customer`
+VALUES (3, 3, 4, 'userC', '11111111', 'Beita', 'Texcko', 'alqsda@gamil.com', 'asd');
 
 
 -- ----------------------------
@@ -256,6 +264,7 @@ SELECT order_id,
        customer_type_name,
        country_name,
        tax_rate,
+       customer_id,
        user_name,
        email,
        address

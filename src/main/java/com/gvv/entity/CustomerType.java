@@ -9,6 +9,6 @@ import lombok.Data;
 @TableName("t_customer_type")
 public class CustomerType {
     @TableId(type = IdType.AUTO)
-    private int customerTypeId;
+    private Integer customerTypeId;
     private String customerTypeName;
 }

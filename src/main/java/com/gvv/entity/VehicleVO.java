@@ -12,7 +12,7 @@ import java.sql.Timestamp;
 @TableName("v_vehicle")
 public class VehicleVO {
     @TableId(type = IdType.AUTO)
-    private int vehicleId;
+    private Integer vehicleId;
     private String brandName;
     private String vehicleTypeName;
     private BigDecimal prise;

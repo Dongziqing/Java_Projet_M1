@@ -9,7 +9,7 @@ import lombok.Data;
 @TableName("v_customer")
 public class CustomerVO {
     @TableId(type = IdType.AUTO)
-    private int customerId;
+    private Integer customerId;
     private String customerTypeName;
     private String userName;
     private String firstName;

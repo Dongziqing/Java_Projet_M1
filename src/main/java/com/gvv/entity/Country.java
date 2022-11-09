@@ -11,7 +11,7 @@ import java.math.BigDecimal;
 @TableName("t_country")
 public class Country {
     @TableId(type = IdType.AUTO)
-    private int countryId;
+    private Integer countryId;
     private String countryName;
     private BigDecimal taxRate;
 }
