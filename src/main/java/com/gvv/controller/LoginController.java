@@ -1,26 +1,28 @@
 package com.gvv.controller;
 
+import com.gvv.MainApp;
 import com.gvv.entity.CustomerVO;
 import com.gvv.service.impl.VOServiceImpl;
 import de.felixroske.jfxsupport.FXMLController;
 import javafx.event.Event;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Scene;
+import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
-import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import javafx.stage.Window;
 import org.springframework.beans.factory.annotation.Autowired;
 import javafx.scene.control.TextField;
-import org.springframework.boot.SpringApplication;
 
-import java.io.IOException;
+import javax.annotation.Resource;
+import java.net.URL;
+import java.util.ResourceBundle;
 
 @FXMLController
-public class LoginController {
+public class LoginController implements Initializable {
+
+    private MainApp mainApp;
     @FXML
     private TextField userNameField;
 
@@ -30,8 +32,7 @@ public class LoginController {
     @FXML
     private Button loginBtn;
 
-    @Autowired
-    private VOServiceImpl voServiceImpl;
+    private VOServiceImpl voServiceImpl = new VOServiceImpl();
 
     private CustomerVO customerVO;
 
@@ -39,7 +40,7 @@ public class LoginController {
     private void login(Event event) {
         Window owner = loginBtn.getScene().getWindow();
 
-        if(userNameField.getText().isEmpty()) {
+        if (userNameField.getText().isEmpty()) {
             showAlert(Alert.AlertType.ERROR, owner, "Form Error!",
                     "Please enter your userName");
             return;
@@ -54,18 +55,10 @@ public class LoginController {
         String password = passwordField.getText();
 
         customerVO = voServiceImpl.Login(userName, password);
-        if(customerVO == null) {
+        if (customerVO == null) {
             infoBox("Please enter correct Email and Password", null, "Failed");
-        }else {
-            try{
-                AnchorPane page = FXMLLoader.load(getClass().getResource("main.fxml"));
-                Scene newScene = new Scene(page);
-                Stage stage = new Stage();
-                stage.setScene(newScene);
-                stage.show();
-            } catch (IOException e) {
-                throw new RuntimeException(e);
-            }
+        } else {
+            mainApp.mainWindow();
         }
     }
 
@@ -87,5 +80,13 @@ public class LoginController {
     }
 
 
+    public void setApp(MainApp mainApp) {
+        this.mainApp = mainApp;
+    }
 
+
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+
+    }
 }
