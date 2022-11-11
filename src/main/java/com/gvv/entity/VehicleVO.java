@@ -15,7 +15,7 @@ public class VehicleVO {
     private Integer vehicleId;
     private String brandName;
     private String vehicleTypeName;
-    private BigDecimal prise;
+    private BigDecimal price;
     private Timestamp storageTime;
     private Boolean saleStatus;
 }

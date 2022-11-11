@@ -47,17 +47,26 @@ public class MainController implements Initializable {
     private Tab aboutTab;
 
     @FXML
+    public TableView<VehicleVO> hTable;
+    @FXML
+    public TableColumn<VehicleVO, String> hColumnBrand;
+    @FXML
+    public TableColumn<VehicleVO, BigDecimal> hColumnPrice;
+    @FXML
+    public TableColumn<VehicleVO, String> hColumnVehicleType;
+
+    @FXML
     public TableView<OrderVO> oTable;
     @FXML
-    public TableColumn<OrderVO, Timestamp> cTime;
+    public TableColumn<OrderVO, Timestamp> oColumnTime;
     @FXML
-    public TableColumn<OrderVO, BigDecimal> cPrise;
+    public TableColumn<OrderVO, BigDecimal> oColumnPrice;
     @FXML
-    public TableColumn<OrderVO, String> cBrand;
+    public TableColumn<OrderVO, String> oColumnBrand;
     @FXML
-    public TableColumn<OrderVO, Boolean> cStatus;
+    public TableColumn<OrderVO, Boolean> oColumnStatus;
     @FXML
-    public TableColumn<OrderVO, String> cType;
+    public TableColumn<OrderVO, String> oColumnType;
 
     @Autowired
     private VOServiceImpl voServiceImpl;
@@ -84,12 +93,22 @@ public class MainController implements Initializable {
         this.vehicleVOs = voServiceImpl.getAllVehicleVOs();
     }
 
+    public void showHome() {
+        hColumnBrand.setCellValueFactory(new PropertyValueFactory<>("brandName"));
+        hColumnPrice.setCellValueFactory(new PropertyValueFactory<>("price"));
+        hColumnVehicleType.setCellValueFactory(new PropertyValueFactory<>("vehicleTypeName"));
+        hTable.setItems(FXCollections.observableList(vehicleVOs));
+    }
+
     public void showOrders() {
-        cTime.setCellValueFactory(new PropertyValueFactory<>("orderCreateDate"));
-        cPrise.setCellValueFactory(new PropertyValueFactory<>("prise"));
-        cBrand.setCellValueFactory(new PropertyValueFactory<>("brandName"));
-        cStatus.setCellValueFactory(new PropertyValueFactory<>("orderStatus"));
-        cType.setCellValueFactory(new PropertyValueFactory<>("paymentType"));
+        oColumnTime.setCellValueFactory(new PropertyValueFactory<>("orderCreateDate"));
+        for(OrderVO vo : orderVOs){
+            vo.setTotalPrise();
+        }
+        oColumnPrice.setCellValueFactory(new PropertyValueFactory<>("totalPrice"));
+        oColumnBrand.setCellValueFactory(new PropertyValueFactory<>("brandName"));
+        oColumnStatus.setCellValueFactory(new PropertyValueFactory<>("orderStatus"));
+        oColumnType.setCellValueFactory(new PropertyValueFactory<>("paymentType"));
         oTable.setItems(FXCollections.observableList(orderVOs));
     }
 
@@ -98,6 +117,7 @@ public class MainController implements Initializable {
         setCustomerVO();
         setOrderVO();
         setVehicleVO();
+        showHome();
         showOrders();
     }
 }

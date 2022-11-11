@@ -1,6 +1,7 @@
 package com.gvv.entity;
 
 import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Data;
@@ -18,7 +19,9 @@ public class OrderVO {
     private String paymentType;
     private String brandName;
     private String vehicleTypeName;
-    private BigDecimal prise;
+    private BigDecimal price;
+    @TableField(exist = false)
+    private BigDecimal totalPrice;
     private Timestamp storageTime;
     private Boolean saleStatus;
     private String customerTypeName;
@@ -28,6 +31,10 @@ public class OrderVO {
     private String userName;
     private String email;
     private String address;
+
+    public void setTotalPrise() {
+        totalPrice = price.add(price.multiply(taxRate));
+    }
 }
 
 

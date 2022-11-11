@@ -75,7 +75,7 @@ CREATE TABLE `t_vehicle`
     `vehicle_id`      int(11)        NOT NULL AUTO_INCREMENT,
     `brand_id`        int(11)        NOT NULL,
     `vehicle_type_id` int(11)        NOT NULL,
-    `prise`           decimal(15, 4) NOT NULL,
+    `price`           decimal(15, 4) NOT NULL,
     `storage_time`    datetime(0)    NOT NULL,
     `sale_status`     boolean DEFAULT FALSE,
     PRIMARY KEY (`vehicle_id`) USING BTREE,
@@ -223,7 +223,7 @@ VALUES (2, 2, 3, '2022-01-09', '1', '1');
 -- ----------------------------
 
 CREATE OR REPLACE VIEW `v_vehicle` AS
-SELECT vehicle_id, brand_name, vehicle_type_name, prise, storage_time, sale_status
+SELECT vehicle_id, brand_name, vehicle_type_name, price, storage_time, sale_status
 FROM `t_vehicle`
          NATURAL JOIN `t_vehicle_type`
          NATURAL JOIN `t_brand`;
@@ -258,7 +258,7 @@ SELECT order_id,
        payment_type,
        brand_name,
        vehicle_type_name,
-       prise,
+       price,
        storage_time,
        sale_status,
        customer_type_name,

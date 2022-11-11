@@ -66,7 +66,9 @@ public class VOServiceImpl implements VOService {
      */
     @Override
     public List<VehicleVO> getAllVehicleVOs() {
-        return vehicleVOMapper.selectList(null);
+        QueryWrapper<VehicleVO> query = new QueryWrapper<VehicleVO>();
+        query.eq("sale_status", 0);
+        return vehicleVOMapper.selectList(query);
     }
 
     /**
@@ -129,7 +131,7 @@ public class VOServiceImpl implements VOService {
         queryV.eq("vehicle_id", vehicleId);
         QueryWrapper<Country> queryC = new QueryWrapper<>();
         queryC.eq("country_id", countryId);
-        BigDecimal prise = vehicleVOMapper.selectList(queryV).get(0).getPrise();
+        BigDecimal prise = vehicleVOMapper.selectList(queryV).get(0).getPrice();
         BigDecimal taxRate = countryMapper.selectList(queryC).get(0).getTaxRate();
         return prise.add(prise.multiply(taxRate));
     }
