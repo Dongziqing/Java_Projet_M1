@@ -17,5 +17,5 @@ public class Vehicle {
     private Integer vehicleTypeId;
     private BigDecimal prise;
     private Timestamp storageTime;
-    private boolean saleStatus;
+    private Boolean saleStatus;
 }

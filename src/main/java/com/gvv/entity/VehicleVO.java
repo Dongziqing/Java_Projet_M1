@@ -17,5 +17,5 @@ public class VehicleVO {
     private String vehicleTypeName;
     private BigDecimal prise;
     private Timestamp storageTime;
-    private boolean saleStatus;
+    private Boolean saleStatus;
 }

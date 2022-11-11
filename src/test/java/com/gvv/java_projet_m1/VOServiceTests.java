@@ -37,7 +37,7 @@ public class VOServiceTests {
 
     @Test
     public void getVehicleByVehicleTypeTest() {
-        List<VehicleVO> vehicleVOs = vOServiceImpl.getVehicleByVehicleType("vehicle");
+        List<VehicleVO> vehicleVOs = vOServiceImpl.getVehicleByVehicleType("car");
         vehicleVOs.forEach(System.out::println);
     }
 

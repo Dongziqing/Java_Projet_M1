@@ -47,7 +47,6 @@ public class VOServiceImpl implements VOService {
      */
     @Override
     public CustomerVO Login(String userName, String password) {
-
         QueryWrapper<Customer> query = new QueryWrapper<>();
         query.eq("user_name", userName);
         query.eq("password", password);

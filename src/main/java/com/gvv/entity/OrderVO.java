@@ -20,11 +20,11 @@ public class OrderVO {
     private String vehicleTypeName;
     private BigDecimal prise;
     private Timestamp storageTime;
-    private boolean saleStatus;
+    private Boolean saleStatus;
     private String customerTypeName;
     private String countryName;
     private BigDecimal taxRate;
-    private Integer CustomerId;
+    private Integer customerId;
     private String userName;
     private String email;
     private String address;

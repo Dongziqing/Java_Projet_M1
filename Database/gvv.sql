@@ -64,7 +64,7 @@ VALUES (1, 'car');
 INSERT INTO `t_vehicle_type`
 VALUES (2, 'scooter');
 INSERT INTO `t_vehicle_type`
-VALUES (3, 'trucks');
+VALUES (3, 'truck');
 
 
 -- ----------------------------

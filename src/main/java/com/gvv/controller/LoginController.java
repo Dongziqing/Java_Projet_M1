@@ -60,8 +60,11 @@ public class LoginController {
         if(customerVO == null) {
             infoBox("Please enter correct Email and Password", null, "Failed");
         }else {
+            /*
             Scene s = loginBtn.getScene();
             s.setUserData(customerVO);
+            */
+            JavaProjetM1Application.customerVO = customerVO;
             JavaProjetM1Application.showView(MainView.class);
             /*
             try{
