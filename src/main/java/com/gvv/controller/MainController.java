@@ -7,16 +7,12 @@ import com.gvv.entity.VehicleVO;
 import com.gvv.service.impl.VOServiceImpl;
 import de.felixroske.jfxsupport.FXMLController;
 import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.Scene;
-import javafx.scene.control.Tab;
-import javafx.scene.control.TableCell;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -24,11 +20,11 @@ import java.math.BigDecimal;
 import java.net.URL;
 import java.sql.Timestamp;
 import java.util.List;
+import java.util.Objects;
 import java.util.ResourceBundle;
 
 @FXMLController
 public class MainController implements Initializable {
-
 
 
     @FXML
@@ -67,6 +63,13 @@ public class MainController implements Initializable {
     public TableColumn<OrderVO, Boolean> oColumnStatus;
     @FXML
     public TableColumn<OrderVO, String> oColumnType;
+
+    @FXML
+    public Label acTextFiled;
+    @FXML
+    public Label aTextFiled;
+    @FXML
+    public ImageView aImage1;
 
     @Autowired
     private VOServiceImpl voServiceImpl;
@@ -112,6 +115,21 @@ public class MainController implements Initializable {
         oTable.setItems(FXCollections.observableList(orderVOs));
     }
 
+    public void showAccount() {
+        StringBuffer sb = new StringBuffer();
+        sb.append("Username: ").append(this.customerVO.getUserName()).append("\n");
+        sb.append("Name: ").append(this.customerVO.getFirstName()).append(" ").append(this.customerVO.getLastName()).append("\n");
+        sb.append("Address: ").append(this.customerVO.getAddress()).append("\n");
+        sb.append("Email: ").append(this.customerVO.getEmail()).append("\n");
+        sb.append("Customer Type: ").append(this.customerVO.getCustomerTypeName());
+        acTextFiled.setText(sb.toString());
+    }
+
+    public void showAbout() {
+        aTextFiled.setText("GVV version 1.0 \n" + "Created by CHEN Zhoujing and DONG Ziqing.");
+        aImage1.setImage(new Image(Objects.requireNonNull(getClass().getResourceAsStream("/images/czj.png"))));
+    }
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         setCustomerVO();
@@ -119,5 +137,7 @@ public class MainController implements Initializable {
         setVehicleVO();
         showHome();
         showOrders();
+        showAccount();
+        showAbout();
     }
 }
