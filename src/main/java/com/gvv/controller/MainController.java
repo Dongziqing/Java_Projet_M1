@@ -9,11 +9,16 @@ import de.felixroske.jfxsupport.FXMLController;
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.*;
+import javafx.scene.control.Label;
+import javafx.scene.control.Tab;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.web.WebEngine;
+import javafx.scene.web.WebView;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.math.BigDecimal;
@@ -129,6 +134,18 @@ public class MainController implements Initializable {
         aTextFiled.setText("GVV version 1.0 \n" + "Created by CHEN Zhoujing and DONG Ziqing.");
         aImage1.setImage(new Image(Objects.requireNonNull(getClass().getResourceAsStream("/images/czj.png"))));
     }
+
+    /*
+    @FXML
+    public WebView iWebView;
+    public void showIndex() {
+
+        WebEngine we = iWebView.getEngine();
+        String mainUrl = Objects.requireNonNull(getClass().getResource("/html/index.html")).toExternalForm();
+        we.load(mainUrl);
+    }
+    */
+
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {

@@ -58,7 +58,6 @@ public class VOServiceImpl implements VOService {
             queryV.eq("customer_id", customers.get(0).getCustomerId());
             return customerVOMapper.selectList(queryV).get(0);
         }
-
     }
 
     /**
