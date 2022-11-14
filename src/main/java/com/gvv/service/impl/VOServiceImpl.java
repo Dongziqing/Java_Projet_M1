@@ -17,8 +17,6 @@ import java.util.Set;
 @Service
 public class VOServiceImpl implements VOService {
 
-    @Autowired
-    CustomerMapper customerMapper;
 
     @Autowired
     CustomerVOMapper customerVOMapper;
@@ -47,6 +45,7 @@ public class VOServiceImpl implements VOService {
      */
     @Override
     public CustomerVO Login(String userName, String password) {
+        /*
         QueryWrapper<Customer> query = new QueryWrapper<>();
         query.eq("user_name", userName);
         query.eq("password", password);
@@ -57,6 +56,16 @@ public class VOServiceImpl implements VOService {
             QueryWrapper<CustomerVO> queryV = new QueryWrapper<>();
             queryV.eq("customer_id", customers.get(0).getCustomerId());
             return customerVOMapper.selectList(queryV).get(0);
+        }
+        */
+        QueryWrapper<CustomerVO> query = new QueryWrapper<>();
+        query.eq("user_name", userName);
+        query.eq("password", password);
+        List<CustomerVO> customers = customerVOMapper.selectList(query);
+        if (customers.isEmpty()) {
+            return null;
+        }else {
+            return customers.get(0);
         }
     }
 
@@ -84,6 +93,7 @@ public class VOServiceImpl implements VOService {
         Timestamp timestamp = new Timestamp(System.currentTimeMillis());
         timestamp.setYear(timestamp.getYear() - 1);
         query.lt("storage_time", timestamp);
+        query.eq("sale_status", false);
         List<VehicleVO> vehicleVOs = vehicleVOMapper.selectList(query);
         vehicleVOs.removeIf(vo -> set.contains(vo.getVehicleId()));
         return vehicleVOs;

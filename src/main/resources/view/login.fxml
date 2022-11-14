@@ -1,15 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.gvv.controller.LoginController">
+<AnchorPane prefHeight="400.0" prefWidth="300.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.gvv.controller.LoginController">
    <children>
-      <Label layoutX="285.0" layoutY="101.0" prefHeight="0.0" prefWidth="31.0" text="GVV" />
-      <Label layoutX="159.0" layoutY="159.0" text="UserName" />
-      <Label layoutX="159.0" layoutY="205.0" text="Password" />
-      <TextField fx:id="userNameField" layoutX="258.0" layoutY="154.0" />
-      <PasswordField fx:id="passwordField" layoutX="258.0" layoutY="200.0" />
-      <Button fx:id="loginBtn" layoutX="370.0" layoutY="252.0" mnemonicParsing="false" onAction="#login" text="Login" />
+      <Label layoutX="135.0" layoutY="83.0" prefHeight="0.0" prefWidth="31.0" text="GVV" />
+      <Label layoutX="49.0" layoutY="133.0" text="UserName" />
+      <Label layoutX="49.0" layoutY="200.0" text="Password" />
+      <TextField fx:id="userNameField" layoutX="49.0" layoutY="157.0" prefHeight="27.0" prefWidth="204.0" />
+      <PasswordField fx:id="passwordField" layoutX="49.0" layoutY="222.0" prefHeight="27.0" prefWidth="204.0" />
+      <Button fx:id="loginBtn" layoutX="204.0" layoutY="277.0" mnemonicParsing="false" onAction="#login" text="Login" />
    </children>
 </AnchorPane>

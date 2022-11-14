@@ -16,6 +16,8 @@ public class Vehicle {
     private Integer brandId;
     private Integer vehicleTypeId;
     private BigDecimal prise;
+    private String info;
     private Timestamp storageTime;
     private Boolean saleStatus;
+    private String phoneNumber;
 }

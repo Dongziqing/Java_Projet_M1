@@ -76,6 +76,7 @@ CREATE TABLE `t_vehicle`
     `brand_id`        int(11)        NOT NULL,
     `vehicle_type_id` int(11)        NOT NULL,
     `price`           decimal(15, 4) NOT NULL,
+    `info`            varchar(255)   NOT NULL,
     `storage_time`    datetime(0)    NOT NULL,
     `sale_status`     boolean DEFAULT FALSE,
     PRIMARY KEY (`vehicle_id`) USING BTREE,
@@ -91,13 +92,13 @@ CREATE TABLE `t_vehicle`
 -- Records of vehicle
 -- ----------------------------
 INSERT INTO `t_vehicle`
-VALUES (1, 1, 1, 88888.8, '2020-12-08', TRUE);
+VALUES (1, 1, 1, 79000, '2019 730Li M Sport Package', '2020-12-08', TRUE);
 INSERT INTO `t_vehicle`
-VALUES (2, 2, 1, 88889.9, '2020-12-09', TRUE);
+VALUES (2, 2, 1, 41000, '2019 E 320 L 4MATIC', '2020-12-09', TRUE);
 INSERT INTO `t_vehicle`
-VALUES (3, 3, 1, 99999.9, '2021-01-01', FALSE);
+VALUES (3, 3, 1, 60100, '2019 45 TFSI quattro', '2021-01-01', FALSE);
 INSERT INTO `t_vehicle`
-VALUES (4, 4, 2, 300, '2022-01-01', FALSE);
+VALUES (4, 4, 2, 300, 'xiaomi scooter 3', '2022-01-01', FALSE);
 
 
 -- ----------------------------
@@ -168,6 +169,7 @@ CREATE TABLE `t_customer`
     `last_name`        varchar(255) NOT NULL,
     `email`            varchar(255) NOT NULL,
     `address`          varchar(255) NOT NULL,
+    `phone_number`     varchar(255) ,
     PRIMARY KEY (`customer_id`) USING BTREE,
     UNIQUE INDEX (`user_name`) USING BTREE,
     FOREIGN KEY (`customer_type_id`) REFERENCES t_customer_type (`customer_type_id`) ON UPDATE CASCADE ON DELETE CASCADE,
@@ -182,11 +184,11 @@ CREATE TABLE `t_customer`
 -- Records of customer
 -- ----------------------------
 INSERT INTO `t_customer`
-VALUES (1, 1, 1, 'userA', '11111111', 'Naura', 'Mzurel', 'john@gmail.com', 'asd');
+VALUES (1, 1, 1, 'userA', '11111111', 'Naura', 'Mzurel', 'john@gmail.com', 'asd', '0754322200');
 INSERT INTO `t_customer`
-VALUES (2, 2, 3, 'userB', '11111111', 'Alpha', 'Teko', 'alpha@gamil.com', 'asd');
+VALUES (2, 2, 3, 'userB', '11111111', 'Alpha', 'Teko', 'alpha@gamil.com', 'asd', '0754322201');
 INSERT INTO `t_customer`
-VALUES (3, 3, 4, 'userC', '11111111', 'Beita', 'Texcko', 'alqsda@gamil.com', 'asd');
+VALUES (3, 3, 4, 'userC', '11111111', 'Beita', 'Texcko', 'alqsda@gamil.com', 'asd', '0754322202');
 
 
 -- ----------------------------
@@ -223,7 +225,7 @@ VALUES (2, 2, 3, '2022-01-09', '1', '1');
 -- ----------------------------
 
 CREATE OR REPLACE VIEW `v_vehicle` AS
-SELECT vehicle_id, brand_name, vehicle_type_name, price, storage_time, sale_status
+SELECT vehicle_id, brand_name, vehicle_type_name, price, info, storage_time, sale_status
 FROM `t_vehicle`
          NATURAL JOIN `t_vehicle_type`
          NATURAL JOIN `t_brand`;
@@ -239,10 +241,12 @@ SELECT customer_id,
        country_name,
        tax_rate,
        user_name,
+       password,
        first_name,
        last_name,
        email,
-       address
+       address,
+       phone_number
 FROM `t_customer`
          NATURAL JOIN `t_customer_type`
          NATURAL JOIN `t_country`;
@@ -259,6 +263,7 @@ SELECT order_id,
        brand_name,
        vehicle_type_name,
        price,
+       info,
        storage_time,
        sale_status,
        customer_type_name,
@@ -267,7 +272,8 @@ SELECT order_id,
        customer_id,
        user_name,
        email,
-       address
+       address,
+       phone_number
 FROM `t_order`
          NATURAL JOIN `v_customer`
          NATURAL JOIN `v_vehicle`

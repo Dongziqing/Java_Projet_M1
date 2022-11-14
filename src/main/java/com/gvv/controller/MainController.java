@@ -17,8 +17,6 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.web.WebEngine;
-import javafx.scene.web.WebView;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.math.BigDecimal;
@@ -51,6 +49,8 @@ public class MainController implements Initializable {
     public TableView<VehicleVO> hTable;
     @FXML
     public TableColumn<VehicleVO, String> hColumnBrand;
+    @FXML
+    public TableColumn<VehicleVO, String> hColumnInfo;
     @FXML
     public TableColumn<VehicleVO, BigDecimal> hColumnPrice;
     @FXML
@@ -103,6 +103,7 @@ public class MainController implements Initializable {
 
     public void showHome() {
         hColumnBrand.setCellValueFactory(new PropertyValueFactory<>("brandName"));
+        hColumnInfo.setCellValueFactory(new PropertyValueFactory<>("info"));
         hColumnPrice.setCellValueFactory(new PropertyValueFactory<>("price"));
         hColumnVehicleType.setCellValueFactory(new PropertyValueFactory<>("vehicleTypeName"));
         hTable.setItems(FXCollections.observableList(vehicleVOs));

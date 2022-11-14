@@ -20,6 +20,7 @@ public class OrderVO {
     private String brandName;
     private String vehicleTypeName;
     private BigDecimal price;
+    private String info;
     @TableField(exist = false)
     private BigDecimal totalPrice;
     private Timestamp storageTime;
@@ -31,6 +32,7 @@ public class OrderVO {
     private String userName;
     private String email;
     private String address;
+    private String phoneNumber;
 
     public void setTotalPrise() {
         totalPrice = price.add(price.multiply(taxRate));

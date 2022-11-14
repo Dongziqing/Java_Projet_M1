@@ -65,6 +65,9 @@ public class LoginController {
             s.setUserData(customerVO);
             */
             JavaProjetM1Application.customerVO = customerVO;
+            Stage s = JavaProjetM1Application.getStage();
+            s.setWidth(800);
+            s.setHeight(640);
             JavaProjetM1Application.showView(MainView.class);
             /*
             try{
