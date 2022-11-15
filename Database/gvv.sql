@@ -96,9 +96,17 @@ VALUES (1, 1, 1, 79000, '2019 730Li M Sport Package', '2020-12-08', TRUE);
 INSERT INTO `t_vehicle`
 VALUES (2, 2, 1, 41000, '2019 E 320 L 4MATIC', '2020-12-09', TRUE);
 INSERT INTO `t_vehicle`
-VALUES (3, 3, 1, 60100, '2019 45 TFSI quattro', '2021-01-01', FALSE);
+VALUES (3, 3, 1, 60100, '2020 45 TFSI quattro', '2021-01-01', FALSE);
 INSERT INTO `t_vehicle`
 VALUES (4, 4, 2, 300, 'xiaomi scooter 3', '2022-01-01', FALSE);
+INSERT INTO `t_vehicle`
+VALUES (5, 5, 2, 33000, 'AITO M5 Electronic', '2022-07-01', FALSE);
+INSERT INTO `t_vehicle`
+VALUES (6, 1, 1, 40500 ,'2022 320i M Sport Package', '2022-07-02', FALSE);
+INSERT INTO `t_vehicle`
+VALUES (7, 1, 1, 42500 ,'2022 325i M Sport Package', '2022-07-02', FALSE);
+INSERT INTO `t_vehicle`
+VALUES (8, 2, 1, 300000, '2022 G 500', '2022-08-02', FALSE);
 
 
 -- ----------------------------

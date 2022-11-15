@@ -7,20 +7,13 @@ import com.gvv.view.MainView;
 import de.felixroske.jfxsupport.FXMLController;
 import javafx.event.Event;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
-import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import javafx.stage.Window;
 import org.springframework.beans.factory.annotation.Autowired;
 import javafx.scene.control.TextField;
-import org.springframework.boot.SpringApplication;
-
-import java.io.IOException;
 
 @FXMLController
 public class LoginController {
@@ -36,19 +29,17 @@ public class LoginController {
     @Autowired
     private VOServiceImpl voServiceImpl;
 
-    private CustomerVO customerVO;
-
     @FXML
     private void login(Event event) {
         Window owner = loginBtn.getScene().getWindow();
 
         if(userNameField.getText().isEmpty()) {
-            showAlert(Alert.AlertType.ERROR, owner, "Form Error!",
+            JavaProjetM1Application.showAlert(Alert.AlertType.ERROR, owner, "Form Error!",
                     "Please enter your userName");
             return;
         }
         if (passwordField.getText().isEmpty()) {
-            showAlert(Alert.AlertType.ERROR, owner, "Form Error!",
+            JavaProjetM1Application.showAlert(Alert.AlertType.ERROR, owner, "Form Error!",
                     "Please enter a password");
             return;
         }
@@ -56,9 +47,9 @@ public class LoginController {
         String userName = userNameField.getText();
         String password = passwordField.getText();
 
-        customerVO = voServiceImpl.Login(userName, password);
+        CustomerVO customerVO = voServiceImpl.login(userName, password);
         if(customerVO == null) {
-            infoBox("Please enter correct Email and Password", null, "Failed");
+            JavaProjetM1Application.infoBox("Please enter correct Email and Password", null, "Failed");
         }else {
             /*
             Scene s = loginBtn.getScene();
@@ -67,7 +58,7 @@ public class LoginController {
             JavaProjetM1Application.customerVO = customerVO;
             Stage s = JavaProjetM1Application.getStage();
             s.setWidth(800);
-            s.setHeight(640);
+            s.setHeight(628);
             JavaProjetM1Application.showView(MainView.class);
             /*
             try{
@@ -83,22 +74,7 @@ public class LoginController {
         }
     }
 
-    public static void infoBox(String infoMessage, String headerText, String title) {
-        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-        alert.setContentText(infoMessage);
-        alert.setTitle(title);
-        alert.setHeaderText(headerText);
-        alert.showAndWait();
-    }
 
-    private static void showAlert(Alert.AlertType alertType, Window owner, String title, String message) {
-        Alert alert = new Alert(alertType);
-        alert.setTitle(title);
-        alert.setHeaderText(null);
-        alert.setContentText(message);
-        alert.initOwner(owner);
-        alert.show();
-    }
 
 
 

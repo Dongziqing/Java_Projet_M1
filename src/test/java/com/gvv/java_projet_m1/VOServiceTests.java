@@ -20,7 +20,7 @@ public class VOServiceTests {
     public void loginTest() {
         String userName = "user";
         String password = "password";
-        CustomerVO customerVO = vOServiceImpl.Login(userName, password);
+        CustomerVO customerVO = vOServiceImpl.login(userName, password);
     }
 
     @Test

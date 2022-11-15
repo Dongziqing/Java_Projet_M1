@@ -44,7 +44,7 @@ public class VOServiceImpl implements VOService {
      * @return
      */
     @Override
-    public CustomerVO Login(String userName, String password) {
+    public CustomerVO login(String userName, String password) {
         /*
         QueryWrapper<Customer> query = new QueryWrapper<>();
         query.eq("user_name", userName);
@@ -67,6 +67,16 @@ public class VOServiceImpl implements VOService {
         }else {
             return customers.get(0);
         }
+    }
+
+    @Override
+    public List<VehicleVO> getVehicleVOsWithCondition(String s) {
+        QueryWrapper<VehicleVO> query = new QueryWrapper<VehicleVO>();
+        query.eq("sale_status", 0);
+        query.like("info", s);
+        query.or();
+        query.like("brand_name", s);
+        return vehicleVOMapper.selectList(query);
     }
 
     /**

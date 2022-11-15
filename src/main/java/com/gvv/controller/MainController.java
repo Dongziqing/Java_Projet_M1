@@ -6,13 +6,13 @@ import com.gvv.entity.OrderVO;
 import com.gvv.entity.VehicleVO;
 import com.gvv.service.impl.VOServiceImpl;
 import de.felixroske.jfxsupport.FXMLController;
+import javafx.beans.property.SimpleBooleanProperty;
 import javafx.collections.FXCollections;
+import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Label;
-import javafx.scene.control.Tab;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.scene.control.*;
+import javafx.scene.control.cell.CheckBoxTableCell;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -28,6 +28,7 @@ import java.util.ResourceBundle;
 
 @FXMLController
 public class MainController implements Initializable {
+
 
 
     @FXML
@@ -47,6 +48,13 @@ public class MainController implements Initializable {
 
     @FXML
     public TableView<VehicleVO> hTable;
+
+    @FXML
+    public Button hSearchBtn;
+
+    @FXML
+    public TextField hTextField;
+
     @FXML
     public TableColumn<VehicleVO, String> hColumnBrand;
     @FXML
@@ -71,8 +79,10 @@ public class MainController implements Initializable {
 
     @FXML
     public Label acTextFiled;
+
     @FXML
     public Label aTextFiled;
+
     @FXML
     public ImageView aImage1;
 
@@ -84,6 +94,16 @@ public class MainController implements Initializable {
     private List<OrderVO> orderVOs;
 
     private List<VehicleVO> vehicleVOs;
+
+    public void hSearch(Event event){
+        String s = hTextField.getText();
+        if (s.isEmpty()){
+            vehicleVOs = voServiceImpl.getAllVehicleVOs();
+        }else {
+            vehicleVOs = voServiceImpl.getVehicleVOsWithCondition(s);
+        }
+        showHome();
+    }
 
     public void setCustomerVO() {
         /*
@@ -146,6 +166,7 @@ public class MainController implements Initializable {
         we.load(mainUrl);
     }
     */
+
 
 
     @Override

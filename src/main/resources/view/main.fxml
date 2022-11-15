@@ -18,11 +18,11 @@
                     <content>
                         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                             <children>
-                                <Button layoutX="529.0" layoutY="16.0" mnemonicParsing="false" text="Search" />
-                                <TableView fx:id="hTable" layoutY="57.0" prefHeight="500.0" prefWidth="800.0">
+                                <Button fx:id="hSearchBtn" layoutX="718.0" layoutY="16.0" mnemonicParsing="false" onAction="#hSearch" text="Search" />
+                                <TableView fx:id="hTable" layoutY="57.0" prefHeight="500.0" prefWidth="800.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="60.0">
                                     <columns>
-                                        <TableColumn fx:id="hColumnBrand" prefWidth="75.0" text="Brand" />
-                                        <TableColumn fx:id="hColumnInfo" prefWidth="75.0" text="Information" />
+                                        <TableColumn fx:id="hColumnBrand" prefWidth="79.0" text="Brand" />
+                                        <TableColumn fx:id="hColumnInfo" prefWidth="320.0" text="Information" />
                                         <TableColumn fx:id="hColumnPrice" prefWidth="75.0" text="Prise without tax" />
                                         <TableColumn fx:id="hColumnVehicleType" prefWidth="75.0" text="Vehicle type" />
                                     </columns>
@@ -30,7 +30,7 @@
                                         <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
                                     </columnResizePolicy>
                                 </TableView>
-                                <TextField layoutX="8.0" layoutY="16.0" prefHeight="27.0" prefWidth="509.0" />
+                                <TextField fx:id="hTextField" layoutX="8.0" layoutY="16.0" prefHeight="27.0" prefWidth="688.0" AnchorPane.leftAnchor="10.0" />
                             </children>
                         </AnchorPane>
                     </content>
@@ -39,7 +39,7 @@
                     <content>
                         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                             <children>
-                                <TableView fx:id="oTable" prefHeight="569.0" prefWidth="800.0">
+                                <TableView fx:id="oTable" prefHeight="569.0" prefWidth="800.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                     <columns>
                                         <TableColumn fx:id="oColumnTime" prefWidth="75.0" text="Order create time" />
                                         <TableColumn fx:id="oColumnPrice" prefWidth="75.0" text="Prise" />
