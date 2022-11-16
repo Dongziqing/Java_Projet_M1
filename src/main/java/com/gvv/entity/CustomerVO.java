@@ -5,12 +5,16 @@ import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Data;
 
+import java.math.BigDecimal;
+
 @Data
 @TableName("v_customer")
 public class CustomerVO {
     @TableId(type = IdType.AUTO)
     private Integer customerId;
     private String customerTypeName;
+    private String countryName;
+    private BigDecimal taxRate;
     private String userName;
     private String password;
     private String firstName;

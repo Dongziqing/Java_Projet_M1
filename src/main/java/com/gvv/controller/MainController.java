@@ -5,20 +5,19 @@ import com.gvv.entity.CustomerVO;
 import com.gvv.entity.OrderVO;
 import com.gvv.entity.VehicleVO;
 import com.gvv.service.impl.VOServiceImpl;
+import com.gvv.view.OrderView;
 import de.felixroske.jfxsupport.FXMLController;
-import javafx.beans.property.SimpleBooleanProperty;
+import javafx.application.Application;
 import javafx.collections.FXCollections;
 import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
-import javafx.scene.control.cell.CheckBoxTableCell;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import org.springframework.beans.factory.annotation.Autowired;
-
 import java.math.BigDecimal;
 import java.net.URL;
 import java.sql.Timestamp;
@@ -122,6 +121,17 @@ public class MainController implements Initializable {
     }
 
     public void showHome() {
+
+        hTable.setRowFactory(tv -> {
+            TableRow<VehicleVO> row = new TableRow<>();
+            row.setOnMouseClicked(event -> {
+                if (event.getClickCount() == 2 && (! row.isEmpty())) {
+                    JavaProjetM1Application.vehicleVO = row.getItem();
+                    JavaProjetM1Application.showView(OrderView.class);
+                }
+            });
+            return row;
+        });
         hColumnBrand.setCellValueFactory(new PropertyValueFactory<>("brandName"));
         hColumnInfo.setCellValueFactory(new PropertyValueFactory<>("info"));
         hColumnPrice.setCellValueFactory(new PropertyValueFactory<>("price"));
@@ -142,7 +152,7 @@ public class MainController implements Initializable {
     }
 
     public void showAccount() {
-        StringBuffer sb = new StringBuffer();
+        StringBuilder sb = new StringBuilder();
         sb.append("Username: ").append(this.customerVO.getUserName()).append("\n");
         sb.append("Name: ").append(this.customerVO.getFirstName()).append(" ").append(this.customerVO.getLastName()).append("\n");
         sb.append("Address: ").append(this.customerVO.getAddress()).append("\n");

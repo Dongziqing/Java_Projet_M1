@@ -5,8 +5,6 @@ import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Data;
-
-import java.awt.*;
 import java.math.BigDecimal;
 import java.sql.Timestamp;
 
@@ -21,6 +19,8 @@ public class VehicleVO {
     private String info;
     private Timestamp storageTime;
     private Boolean saleStatus;
+    /*
     @TableField(exist = false)
     private Button buy;
+    */
 }

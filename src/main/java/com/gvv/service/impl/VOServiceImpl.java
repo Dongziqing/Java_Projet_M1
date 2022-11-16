@@ -140,18 +140,12 @@ public class VOServiceImpl implements VOService {
     }
 
     /**
-     * @param vehicleId
-     * @param countryId
+     * @param prise
+     * @param taxRate
      * @return
      */
     @Override
-    public BigDecimal getVehiclePriceWithTax(int vehicleId, int countryId) {
-        QueryWrapper<VehicleVO> queryV = new QueryWrapper<>();
-        queryV.eq("vehicle_id", vehicleId);
-        QueryWrapper<Country> queryC = new QueryWrapper<>();
-        queryC.eq("country_id", countryId);
-        BigDecimal prise = vehicleVOMapper.selectList(queryV).get(0).getPrice();
-        BigDecimal taxRate = countryMapper.selectList(queryC).get(0).getTaxRate();
+    public BigDecimal getVehiclePriceWithTax(BigDecimal prise, BigDecimal taxRate) {
         return prise.add(prise.multiply(taxRate));
     }
 

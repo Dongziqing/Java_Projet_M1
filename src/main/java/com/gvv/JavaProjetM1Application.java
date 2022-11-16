@@ -1,6 +1,8 @@
 package com.gvv;
 
 import com.gvv.entity.CustomerVO;
+import com.gvv.entity.OrderVO;
+import com.gvv.entity.VehicleVO;
 import com.gvv.view.CustomLoadingView;
 import com.gvv.view.LoginView;
 import de.felixroske.jfxsupport.AbstractJavaFxApplicationSupport;
@@ -14,6 +16,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class JavaProjetM1Application extends AbstractJavaFxApplicationSupport {
 
     public static CustomerVO customerVO;
+
+    public static VehicleVO vehicleVO;
 
     public static void infoBox(String infoMessage, String headerText, String title) {
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
@@ -31,6 +35,7 @@ public class JavaProjetM1Application extends AbstractJavaFxApplicationSupport {
         alert.initOwner(owner);
         alert.show();
     }
+
     public static void main(String[] args) {
         launch(JavaProjetM1Application.class, LoginView.class, new CustomLoadingView() ,args);
     }

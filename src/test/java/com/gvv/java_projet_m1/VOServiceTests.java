@@ -47,8 +47,8 @@ public class VOServiceTests {
         orderVOs.forEach(System.out::println);
     }
 
-    @Test
+
     public void getVehiclePriceWithTaxTest() {
-        System.out.println(vOServiceImpl.getVehiclePriceWithTax(1, 1));
+        // System.out.println(vOServiceImpl.getVehiclePriceWithTax(1, 1));
     }
 }

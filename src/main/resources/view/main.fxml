@@ -18,7 +18,7 @@
                     <content>
                         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                             <children>
-                                <Button fx:id="hSearchBtn" layoutX="718.0" layoutY="16.0" mnemonicParsing="false" onAction="#hSearch" text="Search" />
+                                <Button fx:id="hSearchBtn" layoutX="718.0" layoutY="16.0" mnemonicParsing="false" onAction="#hSearch" text="Search" AnchorPane.bottomAnchor="524.0" AnchorPane.leftAnchor="718.0" AnchorPane.rightAnchor="25.0" AnchorPane.topAnchor="16.0" />
                                 <TableView fx:id="hTable" layoutY="57.0" prefHeight="500.0" prefWidth="800.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="60.0">
                                     <columns>
                                         <TableColumn fx:id="hColumnBrand" prefWidth="79.0" text="Brand" />

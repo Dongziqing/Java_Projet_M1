@@ -18,7 +18,7 @@ public interface VOService {
 
     List<OrderVO> getOrderVOsByCustomerId(int customerId);
 
-    BigDecimal getVehiclePriceWithTax(int vehicleId, int countryId);
+    BigDecimal getVehiclePriceWithTax(BigDecimal prise, BigDecimal taxRate);
 
     int createOrder(int customerId, int vehicleId, String paymentType);
 
