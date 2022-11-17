@@ -107,6 +107,27 @@ INSERT INTO `t_vehicle`
 VALUES (7, 1, 1, 42500 ,'2022 325i M Sport Package', '2022-07-02', FALSE);
 INSERT INTO `t_vehicle`
 VALUES (8, 2, 1, 300000, '2022 G 500', '2022-08-02', FALSE);
+INSERT INTO `t_vehicle`
+VALUES (9, 3, 2, 2000, 'e-tron scooter', '2019-08-15',  FALSE);
+INSERT INTO `t_vehicle`
+VALUES (10, 4, 1, 150000, 'MiCar 1', '2022-08-17', FALSE);
+INSERT INTO `t_vehicle`
+VALUES (11, 5, 1, 43000, 'AITO-M7', '2022-11-18',  FALSE);
+INSERT INTO `t_vehicle`
+VALUES (12, 2, 1, 180000, '2022 S 500 L 4MATIC', '2022-03-13', FALSE);
+INSERT INTO `t_vehicle`
+VALUES (13, 2, 1, 43000, '2022 GLB 220 4MATIC', '2022-04-01', FALSE);
+INSERT INTO `t_vehicle`
+VALUES (14, 3, 1, 40000, '2022 35 TFSI', '2022-03-09',  FALSE);
+INSERT INTO `t_vehicle`
+VALUES (15, 4, 2, 400, 'Mi Electric Scooter 1S', '2020-07-16', FALSE);
+INSERT INTO `t_vehicle`
+VALUES (16, 4, 2, 500, 'Mi Electric Scooter Pro2', '2020-07-16', FALSE);
+INSERT INTO `t_vehicle`
+VALUES (17, 5, 1, 40000, 'SERES SF5', '2021-08-25', FALSE);
+INSERT INTO `t_vehicle`
+VALUES (18, 1, 1, 88000, '2022 xDrive 30Li M', '2022-03-31', FALSE);
+
 
 
 -- ----------------------------
