@@ -7,6 +7,7 @@ import com.gvv.view.MainView;
 import de.felixroske.jfxsupport.FXMLController;
 import javafx.event.Event;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
@@ -15,8 +16,11 @@ import javafx.stage.Window;
 import org.springframework.beans.factory.annotation.Autowired;
 import javafx.scene.control.TextField;
 
+import java.net.URL;
+import java.util.ResourceBundle;
+
 @FXMLController
-public class LoginController {
+public class LoginController implements Initializable {
     @FXML
     private TextField userNameField;
 
@@ -59,6 +63,7 @@ public class LoginController {
             Stage s = JavaProjetM1Application.getStage();
             s.setWidth(800);
             s.setHeight(628);
+            s.centerOnScreen();
             JavaProjetM1Application.showView(MainView.class);
             /*
             try{
@@ -75,7 +80,8 @@ public class LoginController {
     }
 
 
-
-
-
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        JavaProjetM1Application.voServiceImpl = this.voServiceImpl;
+    }
 }

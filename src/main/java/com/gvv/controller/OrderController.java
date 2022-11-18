@@ -10,10 +10,11 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
-import org.springframework.beans.factory.annotation.Autowired;
+import javafx.stage.Stage;
 
 import java.net.URL;
 import java.util.ResourceBundle;
+import java.util.Stack;
 
 @FXMLController
 public class OrderController implements Initializable {
@@ -21,7 +22,7 @@ public class OrderController implements Initializable {
     private VehicleVO vehicleVO;
     private CustomerVO customerVO;
 
-    @Autowired
+
     private VOServiceImpl voServiceImpl;
 
     @FXML
@@ -41,7 +42,8 @@ public class OrderController implements Initializable {
 
 
     public void cancel() {
-        JavaProjetM1Application.showView(MainView.class);
+        Stage s = (Stage)cancelBtn.getScene().getWindow();
+        s.close();
     }
 
     public void pay() {
@@ -75,6 +77,7 @@ public class OrderController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        this.voServiceImpl = JavaProjetM1Application.voServiceImpl;
         this.vehicleVO = JavaProjetM1Application.vehicleVO;
         this.customerVO = JavaProjetM1Application.customerVO;
         showCustomerInfo();

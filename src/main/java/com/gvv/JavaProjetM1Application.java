@@ -3,12 +3,14 @@ package com.gvv;
 import com.gvv.entity.CustomerVO;
 import com.gvv.entity.OrderVO;
 import com.gvv.entity.VehicleVO;
+import com.gvv.service.impl.VOServiceImpl;
 import com.gvv.view.CustomLoadingView;
 import com.gvv.view.LoginView;
 import de.felixroske.jfxsupport.AbstractJavaFxApplicationSupport;
 import javafx.scene.control.Alert;
 import javafx.stage.Window;
 import org.mybatis.spring.annotation.MapperScan;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
@@ -18,6 +20,8 @@ public class JavaProjetM1Application extends AbstractJavaFxApplicationSupport {
     public static CustomerVO customerVO;
 
     public static VehicleVO vehicleVO;
+
+    public static VOServiceImpl voServiceImpl;
 
     public static void infoBox(String infoMessage, String headerText, String title) {
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);

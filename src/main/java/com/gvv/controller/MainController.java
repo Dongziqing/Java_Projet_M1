@@ -5,19 +5,22 @@ import com.gvv.entity.CustomerVO;
 import com.gvv.entity.OrderVO;
 import com.gvv.entity.VehicleVO;
 import com.gvv.service.impl.VOServiceImpl;
-import com.gvv.view.OrderView;
 import de.felixroske.jfxsupport.FXMLController;
-import javafx.application.Application;
 import javafx.collections.FXCollections;
 import javafx.event.Event;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
+import javafx.stage.Stage;
 import org.springframework.beans.factory.annotation.Autowired;
+
+import java.io.IOException;
 import java.math.BigDecimal;
 import java.net.URL;
 import java.sql.Timestamp;
@@ -27,7 +30,6 @@ import java.util.ResourceBundle;
 
 @FXMLController
 public class MainController implements Initializable {
-
 
 
     @FXML
@@ -85,7 +87,6 @@ public class MainController implements Initializable {
     @FXML
     public ImageView aImage1;
 
-    @Autowired
     private VOServiceImpl voServiceImpl;
 
     private CustomerVO customerVO;
@@ -127,7 +128,11 @@ public class MainController implements Initializable {
             row.setOnMouseClicked(event -> {
                 if (event.getClickCount() == 2 && (! row.isEmpty())) {
                     JavaProjetM1Application.vehicleVO = row.getItem();
-                    JavaProjetM1Application.showView(OrderView.class);
+                    JavaProjetM1Application.voServiceImpl = voServiceImpl;
+                    showNewOrder();
+                    showHome();
+                    showOrders();
+                    //JavaProjetM1Application.showView(OrderView.class);
                 }
             });
             return row;
@@ -137,6 +142,17 @@ public class MainController implements Initializable {
         hColumnPrice.setCellValueFactory(new PropertyValueFactory<>("price"));
         hColumnVehicleType.setCellValueFactory(new PropertyValueFactory<>("vehicleTypeName"));
         hTable.setItems(FXCollections.observableList(vehicleVOs));
+    }
+
+    public void showNewOrder() {
+        Stage s = new Stage();
+        try {
+            AnchorPane pane = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/view/order.fxml")));
+            s.setScene(new Scene(pane));
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        s.showAndWait();
     }
 
     public void showOrders() {
@@ -181,6 +197,7 @@ public class MainController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        this.voServiceImpl = JavaProjetM1Application.voServiceImpl;
         setCustomerVO();
         setOrderVO();
         setVehicleVO();
