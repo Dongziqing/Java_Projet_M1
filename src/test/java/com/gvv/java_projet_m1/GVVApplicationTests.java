@@ -10,7 +10,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import java.util.List;
 
 @SpringBootTest
-class JavaProjetM1ApplicationTests {
+class GVVApplicationTests {
 
     @Autowired
     private BrandMapper brandMapper;

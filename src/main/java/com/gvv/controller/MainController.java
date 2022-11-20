@@ -1,6 +1,6 @@
 package com.gvv.controller;
 
-import com.gvv.JavaProjetM1Application;
+import com.gvv.GVVApplication;
 import com.gvv.entity.CustomerVO;
 import com.gvv.entity.OrderVO;
 import com.gvv.entity.VehicleVO;
@@ -18,7 +18,6 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
-import org.springframework.beans.factory.annotation.Autowired;
 
 import java.io.IOException;
 import java.math.BigDecimal;
@@ -110,7 +109,7 @@ public class MainController implements Initializable {
         Scene s = root.getScene();
         customerVO = (CustomerVO) s.getUserData();
         */
-        this.customerVO = JavaProjetM1Application.customerVO;
+        this.customerVO = GVVApplication.customerVO;
     }
 
     public void setOrderVO() {
@@ -127,8 +126,8 @@ public class MainController implements Initializable {
             TableRow<VehicleVO> row = new TableRow<>();
             row.setOnMouseClicked(event -> {
                 if (event.getClickCount() == 2 && (! row.isEmpty())) {
-                    JavaProjetM1Application.vehicleVO = row.getItem();
-                    JavaProjetM1Application.voServiceImpl = voServiceImpl;
+                    GVVApplication.vehicleVO = row.getItem();
+                    GVVApplication.voServiceImpl = voServiceImpl;
                     showNewOrder();
                     showHome();
                     showOrders();
@@ -197,7 +196,7 @@ public class MainController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        this.voServiceImpl = JavaProjetM1Application.voServiceImpl;
+        this.voServiceImpl = GVVApplication.voServiceImpl;
         setCustomerVO();
         setOrderVO();
         setVehicleVO();

@@ -1,10 +1,9 @@
 package com.gvv.controller;
 
-import com.gvv.JavaProjetM1Application;
+import com.gvv.GVVApplication;
 import com.gvv.entity.CustomerVO;
 import com.gvv.entity.VehicleVO;
 import com.gvv.service.impl.VOServiceImpl;
-import com.gvv.view.MainView;
 import de.felixroske.jfxsupport.FXMLController;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -14,7 +13,6 @@ import javafx.stage.Stage;
 
 import java.net.URL;
 import java.util.ResourceBundle;
-import java.util.Stack;
 
 @FXMLController
 public class OrderController implements Initializable {
@@ -77,9 +75,9 @@ public class OrderController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        this.voServiceImpl = JavaProjetM1Application.voServiceImpl;
-        this.vehicleVO = JavaProjetM1Application.vehicleVO;
-        this.customerVO = JavaProjetM1Application.customerVO;
+        this.voServiceImpl = GVVApplication.voServiceImpl;
+        this.vehicleVO = GVVApplication.vehicleVO;
+        this.customerVO = GVVApplication.customerVO;
         showCustomerInfo();
         showPayType();
         showVehicleInfo();

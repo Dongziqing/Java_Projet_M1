@@ -1,7 +1,6 @@
 package com.gvv;
 
 import com.gvv.entity.CustomerVO;
-import com.gvv.entity.OrderVO;
 import com.gvv.entity.VehicleVO;
 import com.gvv.service.impl.VOServiceImpl;
 import com.gvv.view.CustomLoadingView;
@@ -10,12 +9,11 @@ import de.felixroske.jfxsupport.AbstractJavaFxApplicationSupport;
 import javafx.scene.control.Alert;
 import javafx.stage.Window;
 import org.mybatis.spring.annotation.MapperScan;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
 @MapperScan("com.gvv.mapper")
-public class JavaProjetM1Application extends AbstractJavaFxApplicationSupport {
+public class GVVApplication extends AbstractJavaFxApplicationSupport {
 
     public static CustomerVO customerVO;
 
@@ -41,7 +39,7 @@ public class JavaProjetM1Application extends AbstractJavaFxApplicationSupport {
     }
 
     public static void main(String[] args) {
-        launch(JavaProjetM1Application.class, LoginView.class, new CustomLoadingView() ,args);
+        launch(GVVApplication.class, LoginView.class, new CustomLoadingView() ,args);
     }
 
 }

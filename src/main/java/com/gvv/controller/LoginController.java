@@ -1,6 +1,6 @@
 package com.gvv.controller;
 
-import com.gvv.JavaProjetM1Application;
+import com.gvv.GVVApplication;
 import com.gvv.entity.CustomerVO;
 import com.gvv.service.impl.VOServiceImpl;
 import com.gvv.view.MainView;
@@ -38,12 +38,12 @@ public class LoginController implements Initializable {
         Window owner = loginBtn.getScene().getWindow();
 
         if(userNameField.getText().isEmpty()) {
-            JavaProjetM1Application.showAlert(Alert.AlertType.ERROR, owner, "Form Error!",
+            GVVApplication.showAlert(Alert.AlertType.ERROR, owner, "Form Error!",
                     "Please enter your userName");
             return;
         }
         if (passwordField.getText().isEmpty()) {
-            JavaProjetM1Application.showAlert(Alert.AlertType.ERROR, owner, "Form Error!",
+            GVVApplication.showAlert(Alert.AlertType.ERROR, owner, "Form Error!",
                     "Please enter a password");
             return;
         }
@@ -53,18 +53,18 @@ public class LoginController implements Initializable {
 
         CustomerVO customerVO = voServiceImpl.login(userName, password);
         if(customerVO == null) {
-            JavaProjetM1Application.infoBox("Please enter correct Email and Password", null, "Failed");
+            GVVApplication.infoBox("Please enter correct Email and Password", null, "Failed");
         }else {
             /*
             Scene s = loginBtn.getScene();
             s.setUserData(customerVO);
             */
-            JavaProjetM1Application.customerVO = customerVO;
-            Stage s = JavaProjetM1Application.getStage();
+            GVVApplication.customerVO = customerVO;
+            Stage s = GVVApplication.getStage();
             s.setWidth(800);
             s.setHeight(628);
             s.centerOnScreen();
-            JavaProjetM1Application.showView(MainView.class);
+            GVVApplication.showView(MainView.class);
             /*
             try{
                 AnchorPane page = FXMLLoader.load(getClass().getResource("/view/main.fxml"));
@@ -82,6 +82,6 @@ public class LoginController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        JavaProjetM1Application.voServiceImpl = this.voServiceImpl;
+        GVVApplication.voServiceImpl = this.voServiceImpl;
     }
 }
