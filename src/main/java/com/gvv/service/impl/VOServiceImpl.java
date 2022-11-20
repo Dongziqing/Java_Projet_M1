@@ -73,9 +73,7 @@ public class VOServiceImpl implements VOService {
     public List<VehicleVO> getVehicleVOsWithCondition(String s) {
         QueryWrapper<VehicleVO> query = new QueryWrapper<VehicleVO>();
         query.eq("sale_status", 0);
-        query.like("info", s);
-        query.or();
-        query.like("brand_name", s);
+        query.and(q -> q.like("info", s).or().like("brand_name", s));
         return vehicleVOMapper.selectList(query);
     }
 
