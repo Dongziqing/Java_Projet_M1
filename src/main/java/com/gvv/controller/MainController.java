@@ -129,8 +129,6 @@ public class MainController implements Initializable {
                     GVVApplication.vehicleVO = row.getItem();
                     GVVApplication.voServiceImpl = voServiceImpl;
                     showNewOrder();
-                    showHome();
-                    showOrders();
                     //JavaProjetM1Application.showView(OrderView.class);
                 }
             });
@@ -152,6 +150,7 @@ public class MainController implements Initializable {
             throw new RuntimeException(e);
         }
         s.showAndWait();
+        GVVApplication.gvvApplication.refresh();
     }
 
     public void showOrders() {

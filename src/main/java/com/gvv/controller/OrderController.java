@@ -5,13 +5,17 @@ import com.gvv.entity.CustomerVO;
 import com.gvv.entity.VehicleVO;
 import com.gvv.service.impl.VOServiceImpl;
 import de.felixroske.jfxsupport.FXMLController;
+import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 import java.net.URL;
+import java.util.Collection;
 import java.util.ResourceBundle;
 
 @FXMLController
@@ -30,7 +34,13 @@ public class OrderController implements Initializable {
     private Label VehicleInfoField;
 
     @FXML
-    private AnchorPane paymentPane;
+    private VBox vBox;
+
+    @FXML
+    private RadioButton creditRBtn;
+
+    @FXML
+    private RadioButton cashRBtn;
 
     @FXML
     private Button payBtn;
@@ -45,7 +55,14 @@ public class OrderController implements Initializable {
     }
 
     public void pay() {
-        voServiceImpl.createOrder(customerVO.getCustomerId(),vehicleVO.getVehicleId(), "0");
+        String paymentType = null;
+        if(creditRBtn.isSelected()) {
+            paymentType = "0";
+        }
+        else if(cashRBtn.isSelected()) {
+            paymentType = "1";
+        }
+        voServiceImpl.createOrder(customerVO.getCustomerId(),vehicleVO.getVehicleId(), paymentType);
         cancel();
     }
 
@@ -60,11 +77,8 @@ public class OrderController implements Initializable {
 
     public void showPayType() {
         ToggleGroup toggleGroup = new ToggleGroup();
-        RadioButton rb1 = new RadioButton();
-        RadioButton rb2 = new RadioButton();
-        rb1.setToggleGroup(toggleGroup);
-        rb2.setToggleGroup(toggleGroup);
-
+        creditRBtn.setToggleGroup(toggleGroup);
+        cashRBtn.setToggleGroup(toggleGroup);
     }
     public void showVehicleInfo() {
         StringBuilder sb = new StringBuilder();
