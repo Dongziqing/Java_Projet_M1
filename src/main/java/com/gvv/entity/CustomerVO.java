@@ -4,10 +4,12 @@ import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Data;
+import org.apache.ibatis.annotations.Mapper;
 
 import java.math.BigDecimal;
 
 @Data
+@Mapper
 @TableName("v_customer")
 public class CustomerVO {
     @TableId(type = IdType.AUTO)

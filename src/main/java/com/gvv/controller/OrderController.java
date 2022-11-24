@@ -28,7 +28,6 @@ public class OrderController implements Initializable {
     private VehicleVO vehicleVO;
     private CustomerVO customerVO;
 
-
     private VOServiceImpl voServiceImpl;
 
     @FXML
@@ -70,10 +69,16 @@ public class OrderController implements Initializable {
         cancel();
     }
 
+    public String getDate(Timestamp t) {
+        StringBuilder sb = new StringBuilder();
+        sb.append(t.getDate()).append('-').append(1 + t.getMonth()).append('-').append(1900 + t.getYear());
+        return sb.toString();
+    }
+
     public void exportPdf() {
         Map<String, String> map = new HashMap<String, String>();
         Map<String,Object> o = new HashMap<>();
-        String date = (new Timestamp(System.currentTimeMillis())).toString();
+        String date = (getDate(new Timestamp(System.currentTimeMillis())));
         map.put("nameSeller", "GvvApplication");
         map.put("nameBuyer", customerVO.getFirstName() + " " + customerVO.getLastName());
         map.put("dateSelle", date);

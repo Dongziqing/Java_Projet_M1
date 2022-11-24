@@ -30,7 +30,6 @@ import java.util.ResourceBundle;
 @FXMLController
 public class MainController implements Initializable {
 
-
     @FXML
     private AnchorPane root;
 

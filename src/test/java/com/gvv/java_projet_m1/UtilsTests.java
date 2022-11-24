@@ -17,7 +17,7 @@ public class UtilsTests {
         map.put("nameSeller", "xxx");
         map.put("dateSelle2", "xxxxx");
         Map<String,Object> o = new HashMap<>();
-        o.put("datemap",map);
+        o.put("map",map);
         PdfUtils.pdfOut(o);
     }
 }
