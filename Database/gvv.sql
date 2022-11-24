@@ -149,11 +149,13 @@ CREATE TABLE `t_customer_type`
 -- Records of customer_type
 -- ----------------------------
 INSERT INTO `t_customer_type`
-VALUES (1, 'individual');
+VALUES (1, 'admin');
 INSERT INTO `t_customer_type`
-VALUES (2, 'small company');
+VALUES (2, 'individual');
 INSERT INTO `t_customer_type`
-VALUES (3, 'large company');
+VALUES (3, 'small company');
+INSERT INTO `t_customer_type`
+VALUES (4, 'large company');
 
 
 -- ----------------------------
@@ -213,11 +215,13 @@ CREATE TABLE `t_customer`
 -- Records of customer
 -- ----------------------------
 INSERT INTO `t_customer`
-VALUES (1, 1, 1, 'userA', '11111111', 'Naura', 'Mzurel', 'john@gmail.com', 'asd', '0754322200');
+VALUES (1, 1, 1, 'admin', '11111111', 'admin', 'admin', 'admin@gamil.com', 'asd', '111111111');
 INSERT INTO `t_customer`
-VALUES (2, 2, 3, 'userB', '11111111', 'Alpha', 'Teko', 'alpha@gamil.com', 'asd', '0754322201');
+VALUES (2, 2, 1, 'userA', '11111111', 'Naura', 'Mzurel', 'john@gmail.com', 'asd', '0754322200');
 INSERT INTO `t_customer`
-VALUES (3, 3, 4, 'userC', '11111111', 'Beita', 'Texcko', 'alqsda@gamil.com', 'asd', '0754322202');
+VALUES (3, 3, 3, 'userB', '11111111', 'Alpha', 'Teko', 'alpha@gamil.com', 'asd', '0754322201');
+INSERT INTO `t_customer`
+VALUES (4, 4, 4, 'userC', '11111111', 'Beita', 'Texcko', 'alqsda@gamil.com', 'asd', '0754322202');
 
 
 -- ----------------------------

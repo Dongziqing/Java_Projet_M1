@@ -47,16 +47,17 @@ public class GVVApplication extends AbstractJavaFxApplicationSupport {
         alert.show();
     }
 
-    public void refresh() {
+    public void refresh(String s) {
         Stage st = GVVApplication.getStage();
         try {
-            AnchorPane pane = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/view/main.fxml")));
+            AnchorPane pane = FXMLLoader.load(Objects.requireNonNull(getClass().getResource(s)));
             st.setScene(new Scene(pane));
             st.centerOnScreen();
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
     }
+
 
     public static void main(String[] args) {
         launch(GVVApplication.class, LoginView.class, new CustomLoadingView() ,args);

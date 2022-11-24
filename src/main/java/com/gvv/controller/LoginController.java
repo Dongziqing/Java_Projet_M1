@@ -3,23 +3,17 @@ package com.gvv.controller;
 import com.gvv.GVVApplication;
 import com.gvv.entity.CustomerVO;
 import com.gvv.service.impl.VOServiceImpl;
-import com.gvv.view.MainView;
 import de.felixroske.jfxsupport.FXMLController;
 import javafx.event.Event;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
-import javafx.scene.layout.AnchorPane;
-import javafx.stage.Stage;
 import javafx.stage.Window;
 import org.springframework.beans.factory.annotation.Autowired;
 import javafx.scene.control.TextField;
 
-import java.io.IOException;
 import java.net.URL;
 import java.util.Objects;
 import java.util.ResourceBundle;
@@ -66,7 +60,12 @@ public class LoginController implements Initializable {
             */
             GVVApplication.customerVO = customerVO;
             GVVApplication.voServiceImpl = voServiceImpl;
-            GVVApplication.gvvApplication.refresh();
+            if(customerVO.getCustomerTypeName().equals("admin")) {
+                GVVApplication.gvvApplication.refresh("/view/admin.fxml");
+            }else {
+                GVVApplication.gvvApplication.refresh("/view/main.fxml");
+            }
+
             /*
             s.setWidth(800);
             s.setHeight(628);

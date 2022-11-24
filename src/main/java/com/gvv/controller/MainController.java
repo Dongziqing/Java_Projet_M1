@@ -149,7 +149,7 @@ public class MainController implements Initializable {
             throw new RuntimeException(e);
         }
         s.showAndWait();
-        GVVApplication.gvvApplication.refresh();
+        GVVApplication.gvvApplication.refresh("/view/main.fxml");
     }
 
     public void showOrders() {
