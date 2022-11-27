@@ -23,8 +23,6 @@ public class OrderVO {
     private String vehicleTypeName;
     private BigDecimal price;
     private String info;
-    @TableField(exist = false)
-    private BigDecimal totalPrice;
     private Timestamp storageTime;
     private Boolean saleStatus;
     private String customerTypeName;
@@ -36,9 +34,13 @@ public class OrderVO {
     private String address;
     private String phoneNumber;
 
-    public void setTotalPrise() {
-        totalPrice = price.add(price.multiply(taxRate));
-    }
+    @TableField(exist = false)
+    private BigDecimal totalPrice;
+    @TableField(exist = false)
+    private String orderStatusName;
+    @TableField(exist = false)
+    private String paymentTypeName;
+
 }
 
 

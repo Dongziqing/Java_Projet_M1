@@ -73,7 +73,7 @@ public class VOServiceImpl implements VOService {
         QueryWrapper<VehicleVO> query = new QueryWrapper<VehicleVO>();
         query.eq("sale_status", 0);
         query.and(q -> q.like("info", s).or().like("brand_name", s));
-        return vehicleVOMapper.selectList(query);
+        return vehicleVOInitial(vehicleVOMapper.selectList(query));
     }
 
     /**
@@ -83,7 +83,7 @@ public class VOServiceImpl implements VOService {
     public List<VehicleVO> getAllVehicleVOs() {
         QueryWrapper<VehicleVO> query = new QueryWrapper<VehicleVO>();
         query.eq("sale_status", 0);
-        return vehicleVOMapper.selectList(query);
+        return vehicleVOInitial(vehicleVOMapper.selectList(query));
     }
 
     /**
@@ -115,7 +115,7 @@ public class VOServiceImpl implements VOService {
     public List<VehicleVO> getVehicleByVehicleType(String vehicleType) {
         QueryWrapper<VehicleVO> query = new QueryWrapper<>();
         query.eq("vehicle_type_name", vehicleType);
-        return vehicleVOMapper.selectList(query);
+        return vehicleVOInitial(vehicleVOMapper.selectList(query));
     }
 
     /**
@@ -133,7 +133,7 @@ public class VOServiceImpl implements VOService {
         }
         QueryWrapper<OrderVO> queryV = new QueryWrapper<>();
         queryV.in("order_id", s);
-        return orderVOMapper.selectList(queryV);
+        return orderVOInitial(orderVOMapper.selectList(queryV));
     }
 
     /**
@@ -171,11 +171,31 @@ public class VOServiceImpl implements VOService {
         return res;
     }
 
-    /**
-     * @param OrderVOId
-     */
     @Override
-    public void PrintVoucher(int OrderVOId) {
-
+    public List<VehicleVO> vehicleVOInitial(List<VehicleVO> vehicleVOs) {
+        List<VehicleVO> longTimes = getVehicleStorageLongTimes();
+        for(VehicleVO vo : vehicleVOs) {
+            if(longTimes.contains(vo)) {
+                vo.setPromotion(BigDecimal.valueOf(0.8));
+            }else vo.setPromotion(BigDecimal.valueOf(1));
+        }
+        return  vehicleVOs;
     }
+
+    @Override
+    public List<OrderVO> orderVOInitial(List<OrderVO> orderVOs) {
+        for (OrderVO vo : orderVOs) {
+            String orderStatus = vo.getOrderStatus();
+            String paymentType = vo.getPaymentType();
+            vo.setTotalPrice(getVehiclePriceWithTax(vo.getPrice(), vo.getTaxRate()));
+            if(orderStatus.equals("0")) vo.setOrderStatusName("In progress");
+            else if(orderStatus.equals("1")) vo.setOrderStatusName("Validated");
+            else vo.setOrderStatusName("Delivered");
+            if(paymentType.equals("0")) vo.setPaymentTypeName("By cash");
+            else vo.setPaymentTypeName("By credit");
+        }
+        return orderVOs;
+    }
+
+
 }

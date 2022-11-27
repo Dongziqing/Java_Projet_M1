@@ -22,8 +22,8 @@ public class VehicleVO {
     private String info;
     private Timestamp storageTime;
     private Boolean saleStatus;
-    /*
     @TableField(exist = false)
-    private Button buy;
-    */
+    private BigDecimal promotion;
+
+
 }

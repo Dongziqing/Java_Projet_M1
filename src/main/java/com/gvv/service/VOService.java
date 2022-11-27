@@ -22,5 +22,7 @@ public interface VOService {
 
     int createOrder(int customerId, int vehicleId, String paymentType);
 
-    void PrintVoucher(int OrderVOId);
+    List<VehicleVO> vehicleVOInitial(List<VehicleVO> vehicleVOS);
+
+    List<OrderVO> orderVOInitial(List<OrderVO> orderVOS);
 }

@@ -23,9 +23,7 @@ import java.io.IOException;
 import java.math.BigDecimal;
 import java.net.URL;
 import java.sql.Timestamp;
-import java.util.List;
-import java.util.Objects;
-import java.util.ResourceBundle;
+import java.util.*;
 
 @FXMLController
 public class MainController implements Initializable {
@@ -95,11 +93,38 @@ public class MainController implements Initializable {
 
     public void hSearch(Event event){
         String s = hTextField.getText();
+        List<VehicleVO> newVehicleVOs = new ArrayList<VehicleVO>();
         if (s.isEmpty()){
-            vehicleVOs = voServiceImpl.getAllVehicleVOs();
+            newVehicleVOs = voServiceImpl.getAllVehicleVOs();
         }else {
-            vehicleVOs = voServiceImpl.getVehicleVOsWithCondition(s);
+            if(s.contains(" or ")) {
+                String[] strs = s.split(" or ");
+                for(String str : strs){
+                    List<VehicleVO> vs =  voServiceImpl.getVehicleVOsWithCondition(str.strip());
+                    for(VehicleVO vo : vs) {
+                        if(!newVehicleVOs.contains(vo)){
+                            newVehicleVOs.add(vo);
+                        }
+                    }
+                }
+            }else if(s.contains(" and ")) {
+                String[] strs = s.split(" and ");
+                newVehicleVOs = voServiceImpl.getAllVehicleVOs();
+                for(String str : strs) {
+                    Iterator<VehicleVO> voIter = newVehicleVOs.iterator();
+                    List<VehicleVO> vs = voServiceImpl.getVehicleVOsWithCondition(str.strip());
+                    while(voIter.hasNext()) {
+                        VehicleVO vo = voIter.next();
+                        if (!vs.contains(vo)) {
+                            voIter.remove();
+                        }
+                    }
+                }
+            }else {
+                newVehicleVOs = voServiceImpl.getVehicleVOsWithCondition(s.strip());
+            }
         }
+        vehicleVOs = newVehicleVOs;
         showHome();
     }
 
@@ -152,17 +177,17 @@ public class MainController implements Initializable {
         GVVApplication.gvvApplication.refresh("/view/main.fxml");
     }
 
+
     public void showOrders() {
         oColumnTime.setCellValueFactory(new PropertyValueFactory<>("orderCreateDate"));
-        for(OrderVO vo : orderVOs){
-            vo.setTotalPrise();
-        }
         oColumnPrice.setCellValueFactory(new PropertyValueFactory<>("totalPrice"));
         oColumnBrand.setCellValueFactory(new PropertyValueFactory<>("brandName"));
-        oColumnStatus.setCellValueFactory(new PropertyValueFactory<>("orderStatus"));
-        oColumnType.setCellValueFactory(new PropertyValueFactory<>("paymentType"));
+        oColumnStatus.setCellValueFactory(new PropertyValueFactory<>("orderStatusName"));
+        oColumnType.setCellValueFactory(new PropertyValueFactory<>("paymentTypeName"));
         oTable.setItems(FXCollections.observableList(orderVOs));
     }
+
+
 
     public void showAccount() {
         StringBuilder sb = new StringBuilder();
