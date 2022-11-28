@@ -6,6 +6,7 @@ import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Data;
 import org.apache.ibatis.annotations.Mapper;
 
+import java.math.BigDecimal;
 import java.sql.Timestamp;
 
 @Data
@@ -19,4 +20,5 @@ public class Order {
     private Timestamp orderCreateDate;
     private String orderStatus;
     private String paymentType;
+    private BigDecimal salePrice;
 }

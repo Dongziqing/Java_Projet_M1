@@ -19,6 +19,7 @@ public class OrderVO {
     private Timestamp orderCreateDate;
     private String orderStatus;
     private String paymentType;
+    private String salePrice;
     private String brandName;
     private String vehicleTypeName;
     private BigDecimal price;
@@ -34,8 +35,6 @@ public class OrderVO {
     private String address;
     private String phoneNumber;
 
-    @TableField(exist = false)
-    private BigDecimal totalPrice;
     @TableField(exist = false)
     private String orderStatusName;
     @TableField(exist = false)

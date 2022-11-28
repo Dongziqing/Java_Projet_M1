@@ -235,6 +235,7 @@ CREATE TABLE `t_order`
     `order_create_date` datetime(0) NOT NULL,
     `order_status`      varchar(1)  NOT NULL COMMENT 'status of the order(0: in progress, 1: validated, 2: delivered)',
     `payment_type`      varchar(1)  NOT NULL COMMENT 'payment type of the order(0: cash, 1: credit)',
+    `sale_price`        decimal(15, 4) NOT NULL,
     PRIMARY KEY (`order_id`) USING BTREE,
     FOREIGN KEY (`customer_id`) REFERENCES t_customer (`customer_id`) ON UPDATE CASCADE ON DELETE CASCADE,
     FOREIGN KEY (`vehicle_id`) REFERENCES t_vehicle (`vehicle_id`) ON UPDATE CASCADE ON DELETE CASCADE
@@ -248,9 +249,9 @@ CREATE TABLE `t_order`
 -- Records of order
 -- ----------------------------
 INSERT INTO `t_order`
-VALUES (1, 1, 1, '2021-01-08', '0', '0');
+VALUES (1, 2, 1, '2021-01-08', '0', '0', 90850);
 INSERT INTO `t_order`
-VALUES (2, 2, 3, '2022-01-09', '1', '1');
+VALUES (2, 2, 3, '2022-01-09', '1', '1', 69115);
 
 
 -- ----------------------------
@@ -293,6 +294,7 @@ SELECT order_id,
        order_create_date,
        order_status,
        payment_type,
+       sale_price,
        brand_name,
        vehicle_type_name,
        price,

@@ -15,6 +15,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
+import java.math.BigDecimal;
 import java.net.URL;
 import java.sql.Timestamp;
 import java.util.Collection;
@@ -64,7 +65,8 @@ public class OrderController implements Initializable {
         } else if (cashRBtn.isSelected()) {
             paymentType = "1";
         }
-        voServiceImpl.createOrder(customerVO.getCustomerId(), vehicleVO.getVehicleId(), paymentType);
+        BigDecimal salePrice = voServiceImpl.getVehiclePriceWithTax(vehicleVO.getPrice(), customerVO.getTaxRate(), vehicleVO.getPromotion());
+        voServiceImpl.createOrder(customerVO.getCustomerId(), vehicleVO.getVehicleId(), paymentType, salePrice);
         exportPdf();
         cancel();
     }
@@ -82,7 +84,7 @@ public class OrderController implements Initializable {
         map.put("nameSeller", "GvvApplication");
         map.put("nameBuyer", customerVO.getFirstName() + " " + customerVO.getLastName());
         map.put("dateSelle", date);
-        map.put("price", voServiceImpl.getVehiclePriceWithTax(vehicleVO.getPrice(), customerVO.getTaxRate()).stripTrailingZeros().toString());
+        map.put("price", voServiceImpl.getVehiclePriceWithTax(vehicleVO.getPrice(), customerVO.getTaxRate(), vehicleVO.getPromotion()).stripTrailingZeros().toString());
         if (creditRBtn.isSelected()) {
             map.put("paymentType", "By credit");
         } else if (cashRBtn.isSelected()) {
@@ -112,7 +114,7 @@ public class OrderController implements Initializable {
     public void showVehicleInfo() {
         StringBuilder sb = new StringBuilder();
         sb.append(vehicleVO.getInfo()).append("\n");
-        sb.append("price with tax: ").append(voServiceImpl.getVehiclePriceWithTax(vehicleVO.getPrice(), customerVO.getTaxRate()));
+        sb.append("Price with tax: ").append(voServiceImpl.getVehiclePriceWithTax(vehicleVO.getPrice(), customerVO.getTaxRate(), vehicleVO.getPromotion()).stripTrailingZeros().toPlainString());
         VehicleInfoField.setText(sb.toString());
     }
 

@@ -180,7 +180,7 @@ public class MainController implements Initializable {
 
     public void showOrders() {
         oColumnTime.setCellValueFactory(new PropertyValueFactory<>("orderCreateDate"));
-        oColumnPrice.setCellValueFactory(new PropertyValueFactory<>("totalPrice"));
+        oColumnPrice.setCellValueFactory(new PropertyValueFactory<>("salePrice"));
         oColumnBrand.setCellValueFactory(new PropertyValueFactory<>("brandName"));
         oColumnStatus.setCellValueFactory(new PropertyValueFactory<>("orderStatusName"));
         oColumnType.setCellValueFactory(new PropertyValueFactory<>("paymentTypeName"));

@@ -142,8 +142,8 @@ public class VOServiceImpl implements VOService {
      * @return
      */
     @Override
-    public BigDecimal getVehiclePriceWithTax(BigDecimal prise, BigDecimal taxRate) {
-        return prise.add(prise.multiply(taxRate));
+    public BigDecimal getVehiclePriceWithTax(BigDecimal prise, BigDecimal taxRate, BigDecimal promotion) {
+        return promotion.multiply(prise.add(prise.multiply(taxRate)));
     }
 
     /**
@@ -153,12 +153,13 @@ public class VOServiceImpl implements VOService {
      * @return
      */
     @Override
-    public int createOrder(int customerId, int vehicleId, String paymentType) {
+    public int createOrder(int customerId, int vehicleId, String paymentType, BigDecimal salePrice) {
         Order order = new Order();
         order.setCustomerId(customerId);
         order.setVehicleId(vehicleId);
         order.setPaymentType(paymentType);
         order.setOrderStatus("0");
+        order.setSalePrice(salePrice);
         order.setOrderCreateDate(new Timestamp(System.currentTimeMillis()));
         int res = orderMapper.insert(order);
         if(res > 0) {
@@ -193,7 +194,6 @@ public class VOServiceImpl implements VOService {
         for (OrderVO vo : orderVOs) {
             String orderStatus = vo.getOrderStatus();
             String paymentType = vo.getPaymentType();
-            vo.setTotalPrice(getVehiclePriceWithTax(vo.getPrice(), vo.getTaxRate()));
             if(orderStatus.equals("0")) vo.setOrderStatusName("In progress");
             else if(orderStatus.equals("1")) vo.setOrderStatusName("Validated");
             else vo.setOrderStatusName("Delivered");
