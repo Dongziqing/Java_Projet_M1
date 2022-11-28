@@ -77,20 +77,20 @@ public class OrderController implements Initializable {
 
     public void exportPdf() {
         Map<String, String> map = new HashMap<String, String>();
-        Map<String,Object> o = new HashMap<>();
+        Map<String, Object> o = new HashMap<>();
         String date = (getDate(new Timestamp(System.currentTimeMillis())));
         map.put("nameSeller", "GvvApplication");
         map.put("nameBuyer", customerVO.getFirstName() + " " + customerVO.getLastName());
         map.put("dateSelle", date);
-        map.put("price", vehicleVO.getPrice().add(vehicleVO.getPrice().multiply(customerVO.getTaxRate())).toString());
+        map.put("price", voServiceImpl.getVehiclePriceWithTax(vehicleVO.getPrice(), customerVO.getTaxRate()).stripTrailingZeros().toString());
         if (creditRBtn.isSelected()) {
-            map.put("paymentType", "credit");
+            map.put("paymentType", "By credit");
         } else if (cashRBtn.isSelected()) {
-            map.put("paymentType", "cash");
+            map.put("paymentType", "By Cash");
         }
         map.put("signSeller", "GvvApplication");
         map.put("dateSelle2", date);
-        o.put("map",map);
+        o.put("map", map);
         PdfUtils.pdfOut(o);
     }
 

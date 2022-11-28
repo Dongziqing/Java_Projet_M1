@@ -43,12 +43,6 @@ public class PdfUtils {
             PdfCopy copy = new PdfCopy(doc, out);
             doc.open();
             copy.addDocument(new PdfReader(bos.toByteArray()));
-            /*
-            for(int i = 0; i < 2; i++) {
-                PdfImportedPage importPage = copy.getImportedPage(new PdfReader(bos[i].toByteArray()), 1);
-                copy.addPage(importPage);
-            }
-             */
             doc.close();
         } catch (Exception e) {
             System.out.println(e.getMessage());

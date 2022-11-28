@@ -177,7 +177,13 @@ public class VOServiceImpl implements VOService {
         for(VehicleVO vo : vehicleVOs) {
             if(longTimes.contains(vo)) {
                 vo.setPromotion(BigDecimal.valueOf(0.8));
-            }else vo.setPromotion(BigDecimal.valueOf(1));
+                vo.setPricePromotion("Promo: "+ vo.getPrice().stripTrailingZeros().toPlainString() + " -> "+ vo.getPrice().multiply(vo.getPromotion()).stripTrailingZeros().toPlainString());
+            }else {
+                vo.setPromotion(BigDecimal.valueOf(1));
+                vo.setPricePromotion(vo.getPrice().stripTrailingZeros().toPlainString());
+            }
+
+
         }
         return  vehicleVOs;
     }

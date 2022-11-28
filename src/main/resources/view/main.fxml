@@ -23,8 +23,8 @@
                                     <columns>
                                         <TableColumn fx:id="hColumnBrand" prefWidth="79.0" text="Brand" />
                                         <TableColumn fx:id="hColumnInfo" prefWidth="320.0" text="Information" />
-                                        <TableColumn fx:id="hColumnPrice" prefWidth="75.0" text="Prise without tax" />
                                         <TableColumn fx:id="hColumnVehicleType" prefWidth="75.0" text="Vehicle type" />
+                                        <TableColumn fx:id="hColumnPrice" prefWidth="75.0" text="Prise without tax" />
                                     </columns>
                                     <columnResizePolicy>
                                         <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />

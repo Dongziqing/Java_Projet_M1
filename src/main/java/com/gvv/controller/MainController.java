@@ -160,7 +160,7 @@ public class MainController implements Initializable {
         });
         hColumnBrand.setCellValueFactory(new PropertyValueFactory<>("brandName"));
         hColumnInfo.setCellValueFactory(new PropertyValueFactory<>("info"));
-        hColumnPrice.setCellValueFactory(new PropertyValueFactory<>("price"));
+        hColumnPrice.setCellValueFactory(new PropertyValueFactory<>("pricePromotion"));
         hColumnVehicleType.setCellValueFactory(new PropertyValueFactory<>("vehicleTypeName"));
         hTable.setItems(FXCollections.observableList(vehicleVOs));
     }

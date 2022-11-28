@@ -24,6 +24,7 @@ public class VehicleVO {
     private Boolean saleStatus;
     @TableField(exist = false)
     private BigDecimal promotion;
-
+    @TableField(exist = false)
+    private String pricePromotion;
 
 }
