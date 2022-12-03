@@ -60,17 +60,11 @@
                         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                             <children>
                                 <ListView prefHeight="569.0" prefWidth="800.0" />
-                                <Label fx:id="acTextFiled" layoutX="200.0" layoutY="122.0" prefHeight="300.0" prefWidth="400.0" />
-                            </children>
-                        </AnchorPane>
-                    </content>
-                </Tab>
-                <Tab fx:id="about" text="About">
-                    <content>
-                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
-                            <children>
-                                <Label fx:id="aTextFiled" layoutX="110.0" layoutY="135.0" prefHeight="128.0" prefWidth="580.0" />
-                                <ImageView fx:id="aImage1" fitHeight="200.0" fitWidth="200.0" layoutX="104.0" layoutY="263.0" pickOnBounds="true" preserveRatio="true" />
+                                <Label fx:id="acTextFiled" layoutX="42.0" layoutY="29.0" prefHeight="144.0" prefWidth="723.0" />
+                        <TextArea layoutX="25.0" layoutY="186.0" prefHeight="95.0" prefWidth="620.0" text="If you have a special request, for example to purchase a fleet of vehicles, &#10;please fill in the information here and we will have a specialist to deal with it." />
+                                <Label fx:id="aTextFiled" layoutX="42.0" layoutY="284.0" prefHeight="60.0" prefWidth="697.0" />
+                                <ImageView fx:id="aImage1" fitHeight="200.0" fitWidth="200.0" layoutX="304.0" layoutY="353.0" pickOnBounds="true" preserveRatio="true" />
+                        <Button layoutX="701.0" layoutY="221.0" mnemonicParsing="false" text="Submit" />
                             </children>
                         </AnchorPane>
                     </content>

@@ -15,6 +15,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
+import java.io.File;
 import java.math.BigDecimal;
 import java.net.URL;
 import java.sql.Timestamp;
@@ -67,6 +68,8 @@ public class OrderController implements Initializable {
         }
         BigDecimal salePrice = voServiceImpl.getVehiclePriceWithTax(vehicleVO.getPrice(), customerVO.getTaxRate(), vehicleVO.getPromotion());
         voServiceImpl.createOrder(customerVO.getCustomerId(), vehicleVO.getVehicleId(), paymentType, salePrice);
+        File directory = new File("");
+        GVVApplication.infoBox("Order successfully placed.\nThe certificate is located at: " + directory.getAbsolutePath().toString(), null, "Success");
         exportPdf();
         cancel();
     }
@@ -114,6 +117,7 @@ public class OrderController implements Initializable {
     public void showVehicleInfo() {
         StringBuilder sb = new StringBuilder();
         sb.append(vehicleVO.getInfo()).append("\n");
+        sb.append("Tax rate: ").append(this.customerVO.getTaxRate().toPlainString()).append("\n");
         sb.append("Price with tax: ").append(voServiceImpl.getVehiclePriceWithTax(vehicleVO.getPrice(), customerVO.getTaxRate(), vehicleVO.getPromotion()).stripTrailingZeros().toPlainString());
         VehicleInfoField.setText(sb.toString());
     }

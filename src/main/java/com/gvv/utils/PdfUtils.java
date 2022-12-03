@@ -30,7 +30,7 @@ public class PdfUtils {
             AcroFields form = stamper.getAcroFields();
             //文字类的内容处理
             Map<String, String> map = (Map<String, String>) o.get("map");
-            newPdfPath = directory.getAbsolutePath() + "/" + map.get("nameBuyer") + " certificate.pdf";
+            newPdfPath = directory.getAbsolutePath() + "/" + map.get("nameBuyer") + map.hashCode() + " certificate.pdf";
             //form.addSubstitutionFont(bf);
             for (String key : map.keySet()) {
                 String value = map.get(key);

@@ -194,15 +194,14 @@ public class MainController implements Initializable {
         sb.append("Username: ").append(this.customerVO.getUserName()).append("\n");
         sb.append("Name: ").append(this.customerVO.getFirstName()).append(" ").append(this.customerVO.getLastName()).append("\n");
         sb.append("Address: ").append(this.customerVO.getAddress()).append("\n");
+        sb.append("Tax Rate: ").append(this.customerVO.getTaxRate().toPlainString()).append("\n");
         sb.append("Email: ").append(this.customerVO.getEmail()).append("\n");
         sb.append("Customer Type: ").append(this.customerVO.getCustomerTypeName());
         acTextFiled.setText(sb.toString());
-    }
-
-    public void showAbout() {
         aTextFiled.setText("GVV version 1.0 \n" + "Created by CHEN Zhoujing and DONG Ziqing.");
         aImage1.setImage(new Image(Objects.requireNonNull(getClass().getResourceAsStream("/images/czj.png"))));
     }
+
 
     /*
     @FXML
@@ -226,6 +225,5 @@ public class MainController implements Initializable {
         showHome();
         showOrders();
         showAccount();
-        showAbout();
     }
 }

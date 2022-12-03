@@ -55,7 +55,7 @@ public class LoginController implements Initializable {
 
         CustomerVO customerVO = voServiceImpl.login(userName, password);
         if(customerVO == null) {
-            GVVApplication.infoBox("Please enter correct Email and Password", null, "Failed");
+            GVVApplication.infoBox("Please enter correct UserName and Password", null, "Failed");
         }else {
             /*
             Scene s = loginBtn.getScene();
