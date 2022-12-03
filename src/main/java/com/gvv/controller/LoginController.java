@@ -29,6 +29,9 @@ public class LoginController implements Initializable {
     @FXML
     private Button loginBtn;
 
+    @FXML
+    private Button signUpBtn;
+
     @Autowired
     private VOServiceImpl voServiceImpl;
 
@@ -47,8 +50,8 @@ public class LoginController implements Initializable {
             return;
         }
 
-        String userName = userNameField.getText();
-        String password = passwordField.getText();
+        String userName = userNameField.getText().trim();
+        String password = passwordField.getText().trim();
 
         CustomerVO customerVO = voServiceImpl.login(userName, password);
         if(customerVO == null) {
@@ -59,32 +62,18 @@ public class LoginController implements Initializable {
             s.setUserData(customerVO);
             */
             GVVApplication.customerVO = customerVO;
-            GVVApplication.voServiceImpl = voServiceImpl;
             if(customerVO.getCustomerTypeName().equals("admin")) {
                 GVVApplication.gvvApplication.refresh("/view/admin.fxml");
             }else {
                 GVVApplication.gvvApplication.refresh("/view/main.fxml");
             }
 
-            /*
-            s.setWidth(800);
-            s.setHeight(628);
-            s.centerOnScreen();
-            GVVApplication.showView(MainView.class);
-            */
-
-            /*
-            try{
-                AnchorPane page = FXMLLoader.load(getClass().getResource("/view/main.fxml"));
-                Scene newScene = new Scene(page);
-                Stage stage = new Stage();
-                stage.setScene(newScene);
-                stage.show();
-            } catch (IOException e) {
-                throw new RuntimeException(e);
-            }
-            */
         }
+    }
+
+    @FXML
+    private void signUp(Event event) {
+        GVVApplication.gvvApplication.refresh("/view/signup.fxml");
     }
 
 

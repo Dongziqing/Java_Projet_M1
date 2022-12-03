@@ -8,6 +8,8 @@ import java.util.List;
 public interface VOService {
     CustomerVO login(String userName, String password);
 
+    void signUp(int customerTypeId, int country_id, String userName, String password, String firstName, String lastName, String email, String address, String phoneNumber);
+
     List<VehicleVO> getVehicleVOsWithCondition(String s);
 
     List<VehicleVO> getAllVehicleVOs();
@@ -25,4 +27,10 @@ public interface VOService {
     List<VehicleVO> vehicleVOInitial(List<VehicleVO> vehicleVOS);
 
     List<OrderVO> orderVOInitial(List<OrderVO> orderVOS);
+
+    List<Country> getCountries();
+
+    List<CustomerType> getCustomerTypes();
+
+
 }

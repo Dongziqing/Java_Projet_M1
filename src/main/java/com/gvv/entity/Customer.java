@@ -12,6 +12,7 @@ import org.apache.ibatis.annotations.Mapper;
 public class Customer {
     @TableId(type = IdType.AUTO)
     private Integer customerId;
+    private Integer customerTypeId;
     private Integer countryId;
     private String userName;
     private String password;
@@ -19,4 +20,5 @@ public class Customer {
     private String lastName;
     private String email;
     private String address;
+    private String phoneNumber;
 }

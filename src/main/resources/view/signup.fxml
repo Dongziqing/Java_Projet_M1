@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.gvv.controller.SignUpController">
+    <children>
+        <Text layoutX="62.0" layoutY="50.0" strokeType="OUTSIDE" strokeWidth="0.0" text="User type" />
+        <Text layoutX="62.0" layoutY="120.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Username" wrappingWidth="148.21630859375" />
+        <Text layoutX="62.0" layoutY="190.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Password" wrappingWidth="148.21630859375" />
+        <Text layoutX="62.0" layoutY="260.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Firstname" wrappingWidth="148.21630859375" />
+        <Text layoutX="62.0" layoutY="330.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Lastname" wrappingWidth="148.21630859375" />
+        <Text layoutX="315.0" layoutY="50.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Email" wrappingWidth="148.21630859375" />
+        <Text layoutX="315.0" layoutY="120.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Address" />
+        <Text layoutX="315.0" layoutY="190.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Phone number" />
+        <Text layoutX="315.0" layoutY="260.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Country" />
+        <ChoiceBox fx:id="customerTypeCB" layoutX="62.0" layoutY="54.0" prefHeight="27.0" prefWidth="139.0" />
+        <ChoiceBox fx:id="countryCB" layoutX="313.0" layoutY="270.0" prefHeight="27.0" prefWidth="139.0" />
+        <TextField fx:id="userNameField" layoutX="62.0" layoutY="124.0" prefHeight="27.0" prefWidth="139.0" />
+        <TextField fx:id="passwordField" layoutX="62.0" layoutY="193.0" prefHeight="27.0" prefWidth="139.0" />
+        <TextField fx:id="firstNameField" layoutX="62.0" layoutY="270.0" prefHeight="27.0" prefWidth="139.0" />
+        <TextField fx:id="lastNameField" layoutX="62.0" layoutY="333.0" prefHeight="27.0" prefWidth="139.0" />
+        <TextField fx:id="emailField" layoutX="315.0" layoutY="54.0" prefHeight="27.0" prefWidth="139.0" />
+        <TextField fx:id="addressField" layoutX="315.0" layoutY="123.0" prefHeight="27.0" prefWidth="139.0" />
+        <TextField fx:id="phoneNumberField" layoutX="315.0" layoutY="200.0" prefHeight="27.0" prefWidth="139.0" />
+        <Button fx:id="signUpBtn" layoutX="315.0" layoutY="333.0" mnemonicParsing="false" onAction="#signUp" prefHeight="27.0" prefWidth="139.0" text="Sign up" />
+
+    </children>
+</AnchorPane>

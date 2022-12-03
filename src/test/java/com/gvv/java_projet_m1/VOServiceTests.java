@@ -1,5 +1,6 @@
 package com.gvv.java_projet_m1;
 
+import com.gvv.entity.Country;
 import com.gvv.entity.CustomerVO;
 import com.gvv.entity.OrderVO;
 import com.gvv.entity.VehicleVO;
@@ -41,14 +42,16 @@ public class VOServiceTests {
         vehicleVOs.forEach(System.out::println);
     }
 
-    @Test
+
     public void getOrderVOsByCustomerIdTest() {
         List<OrderVO> orderVOs = vOServiceImpl.getOrderVOsByCustomerId(1);
         orderVOs.forEach(System.out::println);
     }
 
 
-    public void getVehiclePriceWithTaxTest() {
-        // System.out.println(vOServiceImpl.getVehiclePriceWithTax(1, 1));
+    @Test
+    public void getCountriesTest() {
+        List<Country> countries = vOServiceImpl.getCountries();
+        countries.forEach(System.out::println);
     }
 }

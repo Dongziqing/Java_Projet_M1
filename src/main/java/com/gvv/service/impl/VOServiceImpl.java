@@ -18,6 +18,9 @@ import java.util.Set;
 public class VOServiceImpl implements VOService {
 
     @Autowired
+    CustomerMapper customerMapper;
+
+    @Autowired
     CustomerVOMapper customerVOMapper;
 
     @Autowired
@@ -32,9 +35,11 @@ public class VOServiceImpl implements VOService {
     @Autowired
     OrderVOMapper orderVOMapper;
 
-
     @Autowired
     CountryMapper countryMapper;
+
+    @Autowired
+    CustomerTypeMapper customerTypeMapper;
 
 
     /**
@@ -66,6 +71,21 @@ public class VOServiceImpl implements VOService {
         }else {
             return customers.get(0);
         }
+    }
+
+    @Override
+    public void signUp(int customerTypeId, int countryId, String userName, String password, String firstName, String lastName, String email, String address, String phoneNumber) {
+        Customer customer = new Customer();
+        customer.setCustomerTypeId(customerTypeId);
+        customer.setCountryId(countryId);
+        customer.setUserName(userName);
+        customer.setPassword(password);
+        customer.setFirstName(firstName);
+        customer.setLastName(lastName);
+        customer.setEmail(email);
+        customer.setAddress(address);
+        customer.setPhoneNumber(phoneNumber);
+        customerMapper.insert(customer);
     }
 
     @Override
@@ -203,5 +223,14 @@ public class VOServiceImpl implements VOService {
         return orderVOs;
     }
 
+    @Override
+    public  List<Country> getCountries() {
+        return countryMapper.selectList(null);
+    }
+
+    @Override
+    public List<CustomerType> getCustomerTypes() {
+        return customerTypeMapper.selectList(null);
+    }
 
 }
