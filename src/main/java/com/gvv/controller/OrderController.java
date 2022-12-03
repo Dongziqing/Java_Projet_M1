@@ -84,7 +84,7 @@ public class OrderController implements Initializable {
         map.put("nameSeller", "GvvApplication");
         map.put("nameBuyer", customerVO.getFirstName() + " " + customerVO.getLastName());
         map.put("dateSelle", date);
-        map.put("price", voServiceImpl.getVehiclePriceWithTax(vehicleVO.getPrice(), customerVO.getTaxRate(), vehicleVO.getPromotion()).stripTrailingZeros().toString());
+        map.put("price", voServiceImpl.getVehiclePriceWithTax(vehicleVO.getPrice(), customerVO.getTaxRate(), vehicleVO.getPromotion()).stripTrailingZeros().toPlainString());
         if (creditRBtn.isSelected()) {
             map.put("paymentType", "By credit");
         } else if (cashRBtn.isSelected()) {

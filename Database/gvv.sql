@@ -39,6 +39,8 @@ INSERT INTO `t_brand`
 VALUES (4, 'Xiaomi');
 INSERT INTO `t_brand`
 VALUES (5, 'Huawei');
+INSERT INTO `t_brand`
+VALUES (6, 'CAT');
 
 
 -- ----------------------------
@@ -127,6 +129,10 @@ INSERT INTO `t_vehicle`
 VALUES (17, 5, 1, 40000, 'SERES SF5', '2021-08-25', FALSE);
 INSERT INTO `t_vehicle`
 VALUES (18, 1, 1, 88000, '2022 xDrive 30Li M', '2022-03-31', FALSE);
+INSERT INTO `t_vehicle`
+VALUES (19, 6, 3, 900000, 'CAT®773G', '2022-04-30', FALSE);
+INSERT INTO `t_vehicle`
+VALUES (20, 6, 3, 1000000, 'CAT®770G', '2022-04-30', FALSE);
 
 
 
@@ -215,13 +221,13 @@ CREATE TABLE `t_customer`
 -- Records of customer
 -- ----------------------------
 INSERT INTO `t_customer`
-VALUES (1, 1, 1, 'admin', '11111111', 'admin', 'admin', 'admin@gamil.com', 'asd', '111111111');
+VALUES (1, 1, 1, 'admin', '11111111', 'admin', 'admin', 'admin@gamil.com', 'admin', '111111111');
 INSERT INTO `t_customer`
-VALUES (2, 2, 1, 'userA', '11111111', 'Naura', 'Mzurel', 'john@gmail.com', 'asd', '0754322200');
+VALUES (2, 2, 1, 'userA', '11111111', 'Naura', 'Mzurel', 'john@gmail.com', 'UNSC MCPO Jean Sienne Zone industrielle 117 RUE DES FLEURS 02552 LIBOURNE', '0754322200');
 INSERT INTO `t_customer`
-VALUES (3, 3, 3, 'userB', '11111111', 'Alpha', 'Teko', 'alpha@gamil.com', 'asd', '0754322201');
+VALUES (3, 3, 3, 'userB', '11111111', 'Alpha', 'Teko', 'alpha@gamil.com', 'Capitaine Jean Luc PICARD 52 RUE DES FLEURS 33500 LIBOURNE FRANCE ', '0754322201');
 INSERT INTO `t_customer`
-VALUES (4, 4, 4, 'userC', '11111111', 'Beita', 'Texcko', 'alqsda@gamil.com', 'asd', '0754322202');
+VALUES (4, 4, 4, 'userC', '11111111', 'Beita', 'Texcko', 'alqsda@gamil.com', 'Robert Robertson, 1234 NW Bobcat Lane, St. Robert, MO 65584-5678', '0754322202');
 
 
 -- ----------------------------

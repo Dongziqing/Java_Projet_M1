@@ -14,7 +14,7 @@ public class PdfUtils {
 
         File directory = new File("");
 
-        String newPdfPath = directory.getAbsolutePath() + "/certificate.pdf";
+        String newPdfPath = null;
 
         PdfReader reader;
         FileOutputStream out;
@@ -23,7 +23,6 @@ public class PdfUtils {
         Document doc = new Document();
 
         try {
-            out = new FileOutputStream(newPdfPath);// 输出流
             bos = new ByteArrayOutputStream();
             reader = new PdfReader(templatePath);// 读取pdf模板
 
@@ -31,6 +30,7 @@ public class PdfUtils {
             AcroFields form = stamper.getAcroFields();
             //文字类的内容处理
             Map<String, String> map = (Map<String, String>) o.get("map");
+            newPdfPath = directory.getAbsolutePath() + "/" + map.get("nameBuyer") + " certificate.pdf";
             //form.addSubstitutionFont(bf);
             for (String key : map.keySet()) {
                 String value = map.get(key);
@@ -39,7 +39,7 @@ public class PdfUtils {
             stamper.setFormFlattening(true);// 如果为false，生成的PDF文件可以编辑，如果为true，生成的PDF文件不可以编辑
             stamper.close();
 
-
+            out = new FileOutputStream(newPdfPath);// 输出流
             PdfCopy copy = new PdfCopy(doc, out);
             doc.open();
             copy.addDocument(new PdfReader(bos.toByteArray()));

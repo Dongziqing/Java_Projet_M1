@@ -10,7 +10,7 @@ import java.util.Map;
 @SpringBootTest
 public class UtilsTests {
 
-    @Test
+
     public void pdfOutTest() {
         Map<String, String> map = new HashMap<String, String>();
         map.put("nameBuyer", "xx");
