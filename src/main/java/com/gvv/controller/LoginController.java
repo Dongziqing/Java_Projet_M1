@@ -79,6 +79,11 @@ public class LoginController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        GVVApplication.voServiceImpl = this.voServiceImpl;
+        if(voServiceImpl == null) {
+            this.voServiceImpl = GVVApplication.voServiceImpl;
+        }else {
+            GVVApplication.voServiceImpl = this.voServiceImpl;
+        }
+
     }
 }

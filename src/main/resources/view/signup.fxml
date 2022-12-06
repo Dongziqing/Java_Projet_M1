@@ -25,7 +25,8 @@
         <TextField fx:id="emailField" layoutX="315.0" layoutY="54.0" prefHeight="27.0" prefWidth="139.0" />
         <TextField fx:id="addressField" layoutX="315.0" layoutY="123.0" prefHeight="27.0" prefWidth="139.0" />
         <TextField fx:id="phoneNumberField" layoutX="315.0" layoutY="200.0" prefHeight="27.0" prefWidth="139.0" />
-        <Button fx:id="signUpBtn" layoutX="315.0" layoutY="333.0" mnemonicParsing="false" onAction="#signUp" prefHeight="27.0" prefWidth="139.0" text="Sign up" />
+        <Button fx:id="signUpBtn" layoutX="395.0" layoutY="333.0" mnemonicParsing="false" onAction="#signUp" prefHeight="27.0" prefWidth="61.0" text="Sign up" />
+        <Button fx:id="cancelBtn" layoutX="315.0" layoutY="333.0" mnemonicParsing="false" onAction="#cancel" text="Cancel" />
 
     </children>
 </AnchorPane>

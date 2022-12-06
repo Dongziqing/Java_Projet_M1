@@ -48,10 +48,18 @@ public class SignUpController implements Initializable {
     private Button signUpBtn;
 
     @FXML
+    private Button cancelBtn;
+
+    @FXML
     private ChoiceBox<Country> countryCB;
 
     @FXML
     private ChoiceBox<CustomerType> customerTypeCB;
+
+
+    public void cancel(Event event) {
+        GVVApplication.gvvApplication.refresh("/view/login.fxml");
+    }
 
 
     public void signUp(Event event) {
