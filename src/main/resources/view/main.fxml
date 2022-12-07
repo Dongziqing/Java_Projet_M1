@@ -45,7 +45,7 @@
                                         <TableColumn fx:id="oColumnPrice" prefWidth="75.0" text="Prise" />
                                         <TableColumn fx:id="oColumnBrand" prefWidth="75.0" text="Brand" />
                                         <TableColumn fx:id="oColumnStatus" prefWidth="75.0" text="Status" />
-                                        <TableColumn fx:id="oColumnType" prefWidth="75.0" text="Vehicle type" />
+                                        <TableColumn fx:id="oColumnType" prefWidth="75.0" text="Payment type" />
                                     </columns>
                                     <columnResizePolicy>
                                         <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />

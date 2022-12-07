@@ -32,5 +32,9 @@ public interface VOService {
 
     List<CustomerType> getCustomerTypes();
 
+    List<OrderVO> getAllOrderVOs();
+
+    void updateOrderStatus(int orderId, String newStatus);
+
 
 }

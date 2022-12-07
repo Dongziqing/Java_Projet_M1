@@ -233,4 +233,17 @@ public class VOServiceImpl implements VOService {
         return customerTypeMapper.selectList(null);
     }
 
+    @Override
+    public List<OrderVO> getAllOrderVOs() {
+        return orderVOInitial(orderVOMapper.selectList(null));
+    }
+
+    @Override
+    public void updateOrderStatus(int orderId, String newStatus) {
+        Order order = new Order();
+        order.setOrderId(orderId);
+        order.setOrderStatus(newStatus);
+        orderMapper.updateById(order);
+    }
+
 }

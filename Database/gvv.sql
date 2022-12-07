@@ -1,7 +1,6 @@
 SET NAMES utf8;
 SET FOREIGN_KEY_CHECKS = FALSE;
 
-
 DROP TABLE IF EXISTS `t_order`;
 DROP TABLE IF EXISTS `t_customer`;
 DROP TABLE IF EXISTS `t_customer_type`;
