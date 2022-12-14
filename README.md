@@ -23,3 +23,5 @@ mvn clean package
 cd target
 java -jar Java_Projet_M1-0.0.1-SNAPSHOT.jar
 ```
+
+https://github.com/CHENZhoujing/Java_Projet_M1.git

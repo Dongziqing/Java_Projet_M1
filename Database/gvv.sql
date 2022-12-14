@@ -99,7 +99,7 @@ VALUES (2, 2, 1, 41000, '2019 E 320 L 4MATIC', '2020-12-09', TRUE);
 INSERT INTO `t_vehicle`
 VALUES (3, 3, 1, 60100, '2020 45 TFSI quattro', '2021-01-01', FALSE);
 INSERT INTO `t_vehicle`
-VALUES (4, 4, 2, 300, 'xiaomi scooter 3', '2022-01-01', FALSE);
+VALUES (4, 4, 2, 300, 'xiaomi scooter 3', '2022-01-01', TRUE);
 INSERT INTO `t_vehicle`
 VALUES (5, 5, 2, 33000, 'AITO M5 Electronic', '2022-07-01', FALSE);
 INSERT INTO `t_vehicle`
@@ -263,9 +263,11 @@ CREATE TABLE `t_order`
 -- Records of order
 -- ----------------------------
 INSERT INTO `t_order`
-VALUES (1, 2, 1, '2021-01-08', '0', '0', 90850);
+VALUES (1, 2, 1, '2021-01-08', '2', '0', 90850);
 INSERT INTO `t_order`
 VALUES (2, 2, 3, '2022-01-09', '1', '1', 69115);
+INSERT INTO `t_order`
+VALUES (3, 3, 4, '2022-02-09', '0', '1', 360);
 
 
 -- ----------------------------
